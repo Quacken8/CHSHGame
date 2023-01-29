@@ -21,7 +21,7 @@ def OneRound(x,y,Shared=SharedDensityMatrix):
     if x == False:
         AliceMeasure = 90.  #State |1> (will give 1 if measured)
     else:
-        AliceMeasure = -45. #State |+>
+        AliceMeasure = -45. #State |->
     if y == False:
         BobMeasure = 225./2.  #State (-sin pi/8 = cos 5pi/8) |0> + ...
     else:
@@ -47,4 +47,5 @@ for i in range(norounds):
         nowins += 1
 
 print(1.*nowins/norounds)
+print("Should be 85% if we chose the optimal strategy.")
 
