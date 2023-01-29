@@ -1,0 +1,203 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{braket}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\begin{document}
+
+Charlie vybere bity $x$ a $y$.
+Cíl je uhodnout $x\land y$, což vypadá následovně:
+\begin{center}
+\begin{tabular}{ c | c || c }
+$x$ & $y$ & $x \land y$ \\ 
+\hline
+ 0 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 1 & 0 & 0 \\
+ 1 & 1 & 1
+\end{tabular}
+\end{center}
+
+Alice dá $a$ a Bob dá $b$, což složí jejich tip následovně:
+\begin{center}
+\begin{tabular}{ c | c || c }
+$a$ & $b$ & $a \oplus b$ \\ 
+\hline
+ 0 & 0 & 0 \\
+ 0 & 1 & 1 \\
+ 1 & 0 & 1 \\
+ 1 & 1 & 0
+\end{tabular}
+\end{center}
+
+Tedy, Alice s Bobem vyhrajou, pokud
+\begin{align}
+a \oplus b = x \land y \,.
+\end{align}
+
+\section{Klasické strategie}
+
+Alice a Bob si vyberou $a$ a $b$ tak, aby $a\oplus b$ vždycky bylo $0$.
+Potom je šance na výhru $75 \%$.
+Mohly by si také vybrat bity tak, aby $a\oplus b$ vždy bylo $1$.
+Pak by jejich šance na výhru byla $25 \%$.
+
+Můžou to udělat chytřeji, když Alice využije znalost $x$ a Bob znalost $b$?
+Ne. (bez důkazu)
+
+\section{Kvantové strategie}
+
+Alice a Bob nyní používají \textbf{entanglovaný qubit}. Tento qubit má podobu
+dvou fotonu -- Alice a Bob mají oba jeden. Prováznost (entanglovanost) těchto
+fotonů vysvětlíme později.
+
+U fotonu je důležitá polarizace, můžeme ji vyjádřit následovně:
+\begin{align}
+P =
+\begin{pmatrix}
+\alpha \\
+\beta
+\end{pmatrix}
+\,,
+\end{align}
+%
+kde $\alpha^2 + \beta^2 = 1$. Alice ani Bob netuší, jakou má jejich foton polarizaci.
+
+%\subsection{Kvantové stavy}
+%
+%Kvantový stav značíme takto (ket):
+%\begin{align}
+%\ket{\psi}
+%\end{align}
+%%
+%nebo takto (bra):
+%\begin{align}
+%\bra{\psi} \,.
+%\end{align}
+%
+%Kvantový stav je matematický objekt, ve kterém je zapsaná všechna informace o daném systému.
+%
+%Příklad je qubit. Qubit může mít stav $\ket{0}$ nebo $\ket{1}$ nebo jiný stav: jakoukoliv lineární kombinaci
+%\begin{align}
+%\ket{\psi} = \alpha \ket{0} + \sqrt{1-\alpha^2} \ket{1}
+%\end{align}
+%%
+%pro $\alpha \in [0,1]$.
+%
+%Takže třeba:
+%\begin{align}
+%\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{0} + \ket{1})
+%\end{align}
+%%
+%je stav, kterému se říká \emph{maximálně promíchaný qubit}.
+%
+%\subsubsection{Skalární součin}
+%
+%Překryv dvou stavů (jak jednoduše si je lze splést) se počítá pomocí skalárního součinu.
+%My ho zde definujeme takto (ignorujeme teď komplexní amplitudy):
+%\begin{align}
+%\Braket{0|1} = \Braket{1|0} &= 0 \,,\\
+%\Braket{1|1} = \Braket{0|0} &= 1 \,,\\
+%(\bra{\phi} + \bra{\psi})\ket{\gamma} &= \braket{\phi|\gamma} + \braket{\psi|\gamma} \,.
+%\end{align}
+%%
+%Poslední vlastnosti se říká linearita.
+%
+%Pravděpodobnost, že si při měření dva stavy spleteme, se vypočítá jako překryv na druhou.
+%\begin{align}
+%P(\ket{\psi}, \ket{\phi}) = |\braket{\psi|\phi}|^2 \,.
+%\end{align}
+%
+%Jaká je pravděpodobnost, že si spleteme maximálně promíchaný qubit a stav $\ket{0}$?
+%
+%Jaká je pravděpodobnost, že si spleteme $\ket{0}$ a $\ket{0}$?
+%
+%\subsection{2 qubity}
+%
+%Trochu se to zkomplikuje, když představíme 2 qubity. Pak existují tyto 4 stavy:
+%\begin{align}
+%\ket{0}\otimes\ket{0}\,, \ket{0}\otimes\ket{1} \,, \ket{1}\otimes\ket{0} \,, \ket{1}\otimes\ket{1}\,.
+%\end{align}
+%%
+%Význam těchto stavů je: qubit A ve stavu 0 + qubit B ve stavu 0 atp.
+%Překryv těchto stavů je: 1 pro stav sám se sebou, 0 pro různé stavy (nejde si je splést).
+%Pak existujou lineární kombinace těchto stavů jako výše (a lin. komb. těchto lin. komb.).
+%
+%Překryv dvou stavů lze spočítat následovně následovně:
+%\begin{align}
+%(\bra{\psi}\otimes \ket{\phi} ) (\ket{a}\otimes \ket{b}) = 
+%\braket{\psi | a} \times \braket{\phi|b} \,,
+%\end{align}
+%%
+%kde $\times$ je prosté násobení.
+%
+%\subsection{2D měření}
+%
+%Alice a Bob sdílí Bellův stav: %TODO intuice
+%\begin{align}
+%\ket{\Phi} =
+%\frac{1}{\sqrt{2}}
+%\left( \ket{00} + \ket{11} \right) \,.
+%\end{align}
+%
+%Dejme tomu, že Alice měří, jestli je qubit A ve stavu $1$ a Bob jestli je jeho qubit ve stavu 1.
+%Pak překryv bude:
+%\begin{align}
+%&\left( \bra{1}\otimes\bra{1}\right)
+%\frac{1}{\sqrt{2}}
+%\left( \ket{0}\otimes\ket{0} + \ket{1}\otimes\ket{1} \right)
+%\\&=
+%\frac{1}{\sqrt{2}}
+%\left( \bra{1}\otimes\bra{1}
+% \ket{0}\otimes\ket{0} +  \bra{1}\otimes\bra{1}\ket{1}\otimes\ket{1} \right) \,.
+%\\&=
+%\frac{1}{\sqrt{2}} \left( 0 + 1\right) \,.
+%\end{align}
+%%
+%Překryv je $1/\sqrt{2}$, takže pravděpodobnost, že naměří stavy $1$ a $1$ je přesně $1/2$.
+%
+%
+%\subsection{Strategie}
+%
+%Alice a Bob opět sdílí Bellův stav.
+%Zde je jejich strategie:
+%
+%\subsubsection{$x=0$}
+%
+%Alice měří, jestli její stav je $\bra{0}$. Pokud ano, dá $a=0$, pokud ne, dá $a=1$
+%
+%\subsubsection{$x=1$}
+%
+%Alice měří, jestli její stav je $(\bra{0}+\ket{1})/\sqrt{2}$. Pokud ano, dá
+%$a=0$, pokud ne, dá $a=1$
+%
+%\subsubsection{$y=0$}
+%
+%Bob měří, jestli jeho stav je
+%\begin{align}
+%\cos (\pi/8 ) \ket {0} + \sin (\pi/8) \ket{1} \,.
+%\end{align}
+%Dá $b=0$ pokud ano a $b=1$ pokud ne.
+%
+%\subsubsection{$y=1$}
+%
+%Bob měří, jestli jeho stav je
+%\begin{align}
+%\cos (\pi/8 ) \ket {0} - \sin (\pi/8) \ket{1} \,.
+%\end{align}
+%Dá $b=0$ pokud ano a $b=1$ pokud ne.
+%
+%
+%%\subsection{Šance na úspěch}
+%%
+%%Dejme tomu, že $x=0$ a $y=0$. Pak musí $a=b$.
+
+
+\end{document}

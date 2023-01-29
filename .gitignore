@@ -1,2 +1,7 @@
 *.vscode
 *.pyc
+
+*.log
+*.pdf
+*.aux
+*.toc
