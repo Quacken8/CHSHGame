@@ -73,15 +73,14 @@ def MeasureAlphaComposite(system,alpha,compQno=0):
     system here is a density matrix.
     """
     Qalpha = GenerateQubit(alpha=alpha)
-    QalphaPrime = GenerateQubit(alpha=(90-alpha))
     
     #We use Born rule to first determine the probability
     #and then transform the state
     Id = np.eye(2)
     PPart = np.outer(Qalpha,Qalpha)
-    PPartPrime = np.outer(QalphaPrime,QalphaPrime)
+    PPartPrime = Id - PPart
     if compQno == 0:
-        Proj = ComposeDensity(PPart, Id)
+        Proj      = ComposeDensity(PPart, Id)
         ProjPrime = ComposeDensity(PPartPrime,Id)
     else:
         Proj      = ComposeDensity(Id,PPart)
@@ -122,6 +121,3 @@ if __name__ == "__main__":
     res, Qres = MeasureAlphaComposite(system,alpha,compQno=0)
     print(res)
     print((Qres))
-    
-    
-    
