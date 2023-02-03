@@ -25,7 +25,15 @@ style: |
 
 # Komplexní čísla
  * vezmeme reálná čísla
- * přidáme k nim nové „číslo“, které budeme značit $\mathrm i$
+ * přidáme k nim nový symbol $\mathrm i$
+ * uděláme to takovým způsobem, že $\mathrm i + 1$ se nerovná žádnému reálnému číslu ani samotnému $\mathrm i$, ale je to úplně nové číslo
+   - matematici tomu říkají „volná algebra“
+
+$$
+\begin{aligned}
+ (2 + \mathrm i)(-1 + 3 \mathrm i) &= 2\cdot(-1) + \mathrm i \cdot(-1) + \mathrm i ()
+\end{aligned}
+$$
 
 ---
 
