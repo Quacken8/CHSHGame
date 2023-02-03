@@ -37,15 +37,28 @@ def OneRound(x,y,Shared=SharedDensityMatrix):
     
     return win
 
-norounds = 1000
-nowins = 0
-for i in range(norounds):
-    x = bool(random.getrandbits(1))
-    y = bool(random.getrandbits(1))
-    A = OneRound(x,y)
-    if A:
-        nowins += 1
+def Play(generatorx,generatory,norounds=1000):
+    nowins = 0
+    for i in range(norounds):
+        x = generatorx()
+        y = generatory()
+        A = OneRound(x,y)
+        if A:
+            nowins += 1
+    winpercent = 1.*nowins/norounds
+    return winpercent
 
-print(1.*nowins/norounds)
-print("Should be 85% if we chose the optimal strategy.")
+def randombit():
+    return bool(random.getrandbits(1))
 
+print("Playing CHSH...")
+print("WP should be 85% if we choose the optimal strategy.")
+
+wp = np.zeros(4)
+#wp[-1] = Play(randombit,randombit)
+for i in range(2):
+    for j in range(2):
+        wp[i*2+j] = Play(lambda : bool(i), lambda : bool(j))
+        print("WP for x="+str(i)+" and y="+str(j)+": "+str(wp[i*2+j]))
+wp_random = np.sum(wp)/4
+print("Total WP: "+str(wp_random))

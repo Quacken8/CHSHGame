@@ -3,6 +3,9 @@ from numpy import random
 import math
 
 
+#TODO change alpha to be divided by 2
+#https://en.wikipedia.org/wiki/Qubit
+
 def normalize(x):
     return x/np.sqrt(np.dot(x,x))
 
@@ -35,13 +38,12 @@ def ComposeDensity(a,b):
 def BellState(type=0):
     if type == 0:
         res = ComposeQubit(Q0,Q1) + ComposeQubit(Q1,Q0)
-        res = normalize(res)
     elif type == 1:
         res = ComposeQubit(Q1,Q1) + ComposeQubit(Q0,Q0)
-        res = normalize(res)
     else:
-        print("Wrong qubit type, quitting.")
+        print("Wrong qubit type, quitting...")
         exit()
+    res = normalize(res)
     return res
 
 
