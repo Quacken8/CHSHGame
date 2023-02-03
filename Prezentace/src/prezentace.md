@@ -11,33 +11,17 @@ style: |
     padding-left: .7rem;
   }
 ---
-
 # Kvantové posezení
 9\. 3. 2023
 
 ---
-
-# Rekapitulace matiky
-  * komplexní čísla
+## Rekapitulace matiky
   * vektory
+  * komplexní čísla
+  * skalární násobení
 
 ---
-
-# Komplexní čísla
- * vezmeme reálná čísla
- * přidáme k nim nový symbol $\mathrm i$
- * uděláme to takovým způsobem, že $\mathrm i + 1$ se nerovná žádnému reálnému číslu ani samotnému $\mathrm i$, ale je to úplně nové číslo
-   - matematici tomu říkají „volná algebra“
-
-$$
-\begin{aligned}
- (2 + \mathrm i)(-1 + 3 \mathrm i) &= 2\cdot(-1) + \mathrm i \cdot(-1) + \mathrm i ()
-\end{aligned}
-$$
-
----
-
-# Vektory
+## Vektory
  * „šipka, která má směr a velikost“ (ou jé!)
  * v klasické fyzice: síla, rychlost, zrychlení
  * důležité pro matematika:
@@ -47,14 +31,14 @@ $$
      _„násobení skalárem“_, $\vec a = s\vec b$
 
 ---
-# Vektory
+## Vektory
  * „$\vec a + \vec b$“ je sčítání _(kde $\vec a, \vec b$ jsou vektory)_
     1. $\vec a + \vec b = \vec b + \vec a$
     2. $\vec a + (\vec b + \vec c) = (\vec a + \vec b) + \vec c$
     3. $\vec a + (-\vec a) = \vec 0$
     4. $\vec a + \vec 0 = \vec a$
 ---
-# Vektory
+## Vektory
  * „$s\vec a$“ je násobení _(kde $s$ je skalár a $\vec a$ je vektor)_.
 
     5. $1\vec a = \vec a$
@@ -63,9 +47,72 @@ $$
     8. $(s + t)\vec a = s\vec a + t\vec a$
 
 ---
-# Vektory
+## Vektory
  - pro matematiky je **vektorový prostor** všechno, co splňuje osm vyjmenovaných pravidel
  - skaláry dokonce nemusí být reálná čísla ($\mathbb R$)
     * mohou to být racionální čísla ($\mathbb Q$)
     * mohou to být komplexní čísla ($\mathbb C$)
     * mohou to být celá čísla modulo nějaké prvočíslo ($\mathbb Z_p$)
+
+---
+## Komplexní čísla
+ * vezmeme reálná čísla
+ * přidáme k nim nový symbol $\mathrm i$
+ * uděláme to takovým způsobem, že $\mathrm i + 1$ se nerovná žádnému reálnému číslu ani samotnému $\mathrm i$, ale je to úplně nové číslo
+   - matematici tomu říkají „volná algebra“
+
+$$
+\begin{aligned}
+ (2 + \mathrm i)(-1 + 3 \mathrm i)
+ &= (2)(-1) + (2)(3\mathrm i) + (\mathrm i)(-1) + (\mathrm i)(3\mathrm i) \\
+ &= -2 + 5\mathrm i + 3\mathrm i^2
+\end{aligned}
+$$
+
+---
+## Komplexní čísla
+* zavedeme pravidlo: $\mathrm i^2 = -1$
+  * proč? hlavně pro srandu
+  * a protože žádné reálné číslo takovou vlastnost nemá
+
+$$
+\begin{aligned}
+ (2 + \mathrm i)(-1 + 3 \mathrm i)
+ &= -2 + 5\mathrm i + 3\mathrm i^2 \\
+ &= -2 + 5\mathrm i - 3 \\
+ &= -5 + 5\mathrm i
+\end{aligned}
+$$
+
+---
+## Komplexní čísla
+Zajímavé pozorování:
+Když si komplexní čísla zakreslíme do soustavy souřadnic, sčítání vypadá jako sčítání vektorů a při násobení se násobí délky a sčítají úhly.
+
+![bg right 80%](https://cdn1.byjus.com/wp-content/uploads/2021/06/multiplication-of-complex-numbers-in-polar-form.png)
+
+---
+## Komplexní čísla
+Zavádíme operaci _„sdružení“_:
+$$
+ \mathrm i \mapsto -\mathrm i
+ \\[.2em]
+ a + b\mathrm i \mapsto a - b\mathrm i
+ \\[.2em]
+ z \mapsto \bar z
+$$
+Je to zrcadlení podle reálné osy. Zajímavost: je to nová operace – nejde ji provést jen pomocí sčítání a násobení.
+
+![bg right 50%](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Complex_conjugate_picture.svg/1200px-Complex_conjugate_picture.svg.png)
+
+---
+## Komplexní čísla
+ * Funguje dělení?
+   - tj. existuje ke každému číslu _inverze_?
+
+ * $(-\mathrm i)(\mathrm i) = -(\mathrm i^2) = -(-1) = 1$
+   - inverze k $\mathrm i$ je $-\mathrm i$
+
+ * $(a + b\mathrm i) \left( \dfrac{a - b\mathrm i}{a^2 + b^2} \right) = \frac{(a + b\mathrm i)(a - b\mathrm i)}{a^2 + b^2} = \frac{a^2 + ab\mathrm i - ab\mathrm i + b^2}{a^2 + b^2} =$
+   $= \frac{a^2 + b^2}{a^2 + b^2} = 1$
+    - inverze k $z \neq 0$ je $\frac{\bar z}{|z|^2}$
