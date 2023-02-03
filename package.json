@@ -1,0 +1,15 @@
+{
+  "name": "kvantove-posezeni",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-pres": "marp src/prezentace.md -o bin/prezentace.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "@marp-team/marp-cli": "^2.3.0"
+  }
+}

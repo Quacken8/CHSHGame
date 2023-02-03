@@ -5,3 +5,6 @@
 *.pdf
 *.aux
 *.toc
+
+node_modules
+bin
