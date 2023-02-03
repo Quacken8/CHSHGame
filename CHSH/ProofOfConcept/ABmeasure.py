@@ -12,21 +12,22 @@ SharedQubit = qubit.BellState(type=1)
 SharedDensityMatrix = np.outer(SharedQubit,SharedQubit)
 
 def IsSuccess(x,y,a,b):
-    A = x or y
+    A = x and y
     B = a ^ b
     return A == B
 
-def OneRound(x,y,Shared=SharedDensityMatrix):
+def OneRound(x,y,Shared=SharedDensityMatrix,verbosity=0):
     """https://en.wikipedia.org/wiki/CHSH_inequality#Optimal_quantum_strategy"""
     if x == False:
-        AliceMeasure = 90.  #State |1> (will give 1 if measured)
+        AliceMeasure = qubit.Q1  #State |1> (will give 1 if measured)
     else:
-        AliceMeasure = -45. #State |->
+        AliceMeasure = qubit.AddQubit(qubit.Q0,-qubit.Q1) #State |->
     if y == False:
-        BobMeasure = 225./2.  #State (-sin pi/8 = cos 5pi/8) |0> + ...
+        BobMeasure = qubit.AddQubit(-np.sin(np.pi/8)*qubit.Q0,np.cos(np.pi/8)*qubit.Q1) #State (-sin pi/8 = cos 5pi/8) |0> + ...
     else:
-        BobMeasure = 135./2.  #State  (sin pi/8 = cos 3pi/8) |0> + ...
+        BobMeasure = qubit.AddQubit(np.sin(np.pi/8)*qubit.Q0,np.cos(np.pi/8)*qubit.Q1)  #State  (sin pi/8 = cos 3pi/8) |0> + ...
 
+    if verbosity >= 1: print("x: "+str(x)+" y: "+str(y))
     #First, Alice Measures.
     Ares, AQres = qubit.MeasureAlphaComposite(Shared,AliceMeasure,compQno=0)
 

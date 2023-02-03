@@ -3,8 +3,8 @@ from numpy import random
 import math
 
 
-#TODO change alpha to be divided by 2
-#https://en.wikipedia.org/wiki/Qubit
+#Alpha here ranges from 0 to 360.
+#We choose this representation to avoid imaginary numbers.
 
 def normalize(x):
     return x/np.sqrt(np.dot(x,x))
@@ -26,20 +26,21 @@ def GenerateQubit(alpha=0,random=False):
 Q0 = np.array([1.,0.], dtype=float)
 Q1 = np.array([0.,1.], dtype=float)
     
-def ComposeQubit(a,b):
-    res = np.tensordot(a,b,axes=0).flatten()
+
+def AddQubit(a,b):
+    res = a + b
+    res = normalize(res)
     return res
 
-def ComposeDensity(a,b):
-    res =  np.tensordot(a,b,axes=0)
-    res = np.block( [ [res[0,0], res[0,1]],[res[1,0], res[1,1]]]   )
+def Compose(a,b):
+    res = np.kron(a,b)
     return res
     
 def BellState(type=0):
     if type == 0:
-        res = ComposeQubit(Q0,Q1) + ComposeQubit(Q1,Q0)
+        res = Compose(Q0,Q1) + Compose(Q1,Q0)
     elif type == 1:
-        res = ComposeQubit(Q1,Q1) + ComposeQubit(Q0,Q0)
+        res = Compose(Q1,Q1) + Compose(Q0,Q0)
     else:
         print("Wrong qubit type, quitting...")
         exit()
@@ -67,28 +68,30 @@ def MeasureAlpha(qubit,alpha,composite=False,compQno=0):
         res = False
     return res, Qres
 
-            
-def MeasureAlphaComposite(system,alpha,compQno=0):
+def MeasureAlphaComposite(system,measure,compQno=0):
     """Given a 2-qubit system, we measure on Qubit no. compQno,
     whether it is in state alpha. We return the outcome of the measurement
     as well as the transformed system.
     system here is a density matrix.
     """
-    Qalpha = GenerateQubit(alpha=alpha)
-    
+
     #We use Born rule to first determine the probability
     #and then transform the state
     Id = np.eye(2)
-    PPart = np.outer(Qalpha,Qalpha)
+    PPart = np.outer(measure,measure)
     PPartPrime = Id - PPart
     if compQno == 0:
-        Proj      = ComposeDensity(PPart, Id)
-        ProjPrime = ComposeDensity(PPartPrime,Id)
+        Proj      = Compose(PPart, Id)
+        ProjPrime = Compose(PPartPrime,Id)
     else:
-        Proj      = ComposeDensity(Id,PPart)
-        ProjPrime = ComposeDensity(Id,PPartPrime)
+        Proj      = Compose(Id,PPart)
+        ProjPrime = Compose(Id,PPartPrime)
 
     Prob = np.trace(np.matmul(Proj,system))
+    if 0: #Sanity check
+        ProbPrime = np.trace(np.matmul(ProjPrime,system))
+        print(Prob+ProbPrime)
+        exit()
     
     x = random.rand()
     if x < Prob:
@@ -114,12 +117,24 @@ if __name__ == "__main__":
     
     print("##########")
     print("Test no. 2")
-    print("Either True and |11> or True and |00>")
-    alpha = 0
-    resAnticipate = ComposeQubit(Q0,Q0)
+    print("Either False and |11> or True and |00>")
+    alpha = GenerateQubit(0)
+    resAnticipate = Compose(Q0,Q0)
     system = BellState(type=1)
     system = np.outer(system,system) #We need a density matrix
     print(system)
     res, Qres = MeasureAlphaComposite(system,alpha,compQno=0)
     print(res)
     print((Qres))
+    
+    print("##########")
+    print("Test no. 3")
+    print("Should always be true.")
+    first  = AddQubit(Q1*32,Q0*23)
+    second = AddQubit(Q0*32,Q1*23)
+    system = Compose(first,second)
+    system = np.outer(system,system)
+    
+    A, B = MeasureAlphaComposite(system,first,compQno=0)
+    print(A)
+    
