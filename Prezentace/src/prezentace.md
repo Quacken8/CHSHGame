@@ -18,7 +18,7 @@ style: |
 ## Rekapitulace matiky
   * vektory
   * komplexní čísla
-  * skalární násobení
+  * vnitřní součin
 
 ---
 ## Vektory
@@ -55,6 +55,43 @@ style: |
     * mohou to být celá čísla modulo nějaké prvočíslo ($\mathbb Z_p$)
 
 ---
+## Vektory
+ - $n$-tice čísel, které se sčítají po složkách:
+$$
+  \begin{pmatrix}a\\b\\c\end{pmatrix} +
+  \begin{pmatrix}e\\f\\g\end{pmatrix} =
+  \begin{pmatrix}a + e\\b + f\\c + g\end{pmatrix}
+$$
+… a skalárem se násobí všechny složky najednou:
+$$
+  s \, \begin{pmatrix}a\\b\\c\end{pmatrix} = \begin{pmatrix}sa\\sb\\sc\end{pmatrix}
+$$
+
+---
+## Vektory
+ - takové $n$-tice splňují definici vektorového prostoru
+
+<div style="text-align: center">
+  vektory jako šipky ve 2D ⟷ dvojice reálných čísel<br/>
+  vektory jako šipky ve 3D ⟷ trojice reálných čísel
+</div>
+
+ * izomorfismus:
+$$
+\begin{matrix}
+  V & \hspace{-1em}\xleftrightarrow{f}\hspace{-1em} & W \\[.3em]
+  \quad\downarrow^\text{lin.} & & \quad\downarrow^\text{lin.} \\[.2em]
+  V & \hspace{-1em}\xleftrightarrow{f}\hspace{-1em} & W
+\end{matrix}
+$$
+
+---
+## Vektory
+ * všechny vektorové prostory stejné dimenze nad stejným tělesem jsou izomorfní
+ * je tedy jedno, jestli provádíme výpočty s šipkami, nebo $n$-ticemi čísel, nebo to dokonce měníme v průběhu výpočtu
+ * podobnost: je jedno, jestli aritmetický výpočet provedu v arabských nebo římských číslicích
+
+---
 ## Komplexní čísla
  * vezmeme reálná čísla
  * přidáme k nim nový symbol $\mathrm i$
@@ -89,6 +126,8 @@ $$
 Zajímavé pozorování:
 Když si komplexní čísla zakreslíme do soustavy souřadnic, sčítání vypadá jako sčítání vektorů a při násobení se násobí délky a sčítají úhly.
 
+Délku komplexního čísla $z$ budeme značit $|z|$.
+
 ![bg right 80%](https://cdn1.byjus.com/wp-content/uploads/2021/06/multiplication-of-complex-numbers-in-polar-form.png)
 
 ---
@@ -116,3 +155,40 @@ Je to zrcadlení podle reálné osy. Zajímavost: je to nová operace – nejde 
  * $(a + b\mathrm i) \left( \dfrac{a - b\mathrm i}{a^2 + b^2} \right) = \frac{(a + b\mathrm i)(a - b\mathrm i)}{a^2 + b^2} = \frac{a^2 + ab\mathrm i - ab\mathrm i + b^2}{a^2 + b^2} =$
    $= \frac{a^2 + b^2}{a^2 + b^2} = 1$
     - inverze k $z \neq 0$ je $\frac{\bar z}{|z|^2}$
+
+---
+## Vnitřní součin
+ * nový druh násobení, kterým můžeme „vybavit“ náš vektorový prostor, je to binární operace dvou vektorů, jejíž výsledek je skalár
+ * také nazývaný _„skalární součin“_ – neplést s násobením vektoru skalárem (což je operace mezi skalárem a vektorem a její výsledek je vektor)
+
+$$
+  \begin{pmatrix}a\\b\\c\end{pmatrix} \cdot \begin{pmatrix}d\\e\\f\end{pmatrix}
+  = ad + be + cf
+$$
+
+---
+## Vnitřní součin
+ * vnitřní součin vektoru se sebou samým = čtverec jeho délky
+$$
+  \begin{pmatrix}a\\b\\c\end{pmatrix} \cdot \begin{pmatrix}a\\b\\c\end{pmatrix}
+  = a^2 + b^2 + c^2
+  =: \left\lVert \begin{pmatrix}a\\b\\c\end{pmatrix} \right\rVert^2
+$$
+
+---
+## Vnitřní součin
+ * u komplexních čísel neplatí $x^2 \geq 0$, proto skalární součin trochu upravíme:
+$$
+  \begin{pmatrix}a\\b\\c\end{pmatrix} \cdot \begin{pmatrix}d\\e\\f\end{pmatrix}
+  = \bar ad + \bar be + \bar cf
+$$
+$$
+  \begin{pmatrix}a\\b\\c\end{pmatrix} \cdot \begin{pmatrix}a\\b\\c\end{pmatrix}
+  = \bar aa + \bar bb + \bar cc
+  = |a|^2 + |b|^2 + |c|^2
+  =: \left\lVert \begin{pmatrix}a\\b\\c\end{pmatrix} \right\rVert^2
+$$
+
+---
+# Kvantovka
+ *  asdf
