@@ -1,0 +1,233 @@
+%Compile by xelatex
+\documentclass[11pt,t]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{dtk-logos}
+\usepackage{color}
+\usepackage{microtype}
+
+
+
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\usepackage{fontspec}
+\usepackage{ebgaramond}
+
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \raisebox{.25em}{\insertframenumber/\inserttotalframenumber}
+}
+
+%My own slide environments
+\newenvironment{slidecontent}
+	{\vspace*{\fill}
+	}
+	{
+	\vspace*{\fill}
+}
+\newenvironment{slidetitle}
+	{\vspace*{0.5cm}\hspace*{.2cm}\Huge
+	}
+	{
+	\vspace*{0.6cm}
+}
+
+%An attempt of taming the default behaviour of \item
+\useinnertheme{circles}
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\color{black}{$\bullet$}}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\color{black}{$\bullet$}}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\color{black}{$\bullet$}}}
+
+%Margins
+\setbeamersize{text margin left=0.2cm,text margin right=0.2cm}
+
+%I can redefine pauser to nothing if I want to get rid of duplicate slides
+\newcommand{\pauser}{\pause}
+
+\title{\color{black}%
+\Huge
+Kvantové posezení\\
+úvod
+%\large
+}
+\date{10. 03. 2023}
+
+
+\graphicspath{{fig/}}
+
+
+%%%% Macros
+\makeatletter
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\makeatother
+
+\newcommand{\cheatbox}[3]{%
+\shifttext{#1}{\raisebox{#2}[0pt][0pt]{%
+#3%
+}}%
+}
+
+
+%%%%%% Tips for people who also want to do cool beamer presentations:
+%
+%1. When creating the presentation, you can only compile one slide at a time:
+% https://tbrink.science/blog/2017/05/13/compiling-only-some-slides-of-a-latex-beamer-presentation/
+%\includeonlyframes{current}
+% To quickly switch between current slides, I use this vim macro
+%:nnoremap <f5> ?label=current<cr>F,v3ed/begin{frame<cr>fnfnpzz
+%2. All the latex themes are ugly, so I just drew my theme in gimp and include
+%it as a background image. Then the slidetitle and slidecontent environment
+%serve as space for my content.
+%3. How do I make images float? It would be sane to use a similar environment
+%to the floating environment in html. But there is no such thing in LaTeX.....
+%Solution: the cheatbox environment creates a box with 0 width and 0 height, so that
+%it does not disturb the formatting (it feels like cheating, that's why it's called cheatbox).
+%raisbox and shifttext is used for positioning.
+%4. If you don't know what \only is, look up the overlays section in the beamer manual
+% http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+%or search for animation online
+%If you know how \only<1> works, then
+%+ is like the next number (and increment the number) and . is the same thing, but don't increment.
+
+
+
+\begin{document}
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background2.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+\end{slidetitle}
+\begin{slidecontent}
+\maketitle
+\end{slidecontent}
+\end{frame}
+}
+
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background2.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+\end{slidetitle}
+\begin{slidecontent}
+\centering
+\Huge
+\vfill
+Představení se navzájem\\
+\phantom{.}\\
+\Large
+Jak se jmenuješ a~co tě zajímá na kvantové mechanice?
+\\
+\phantom{.}\\
+\pause
+Teploměr: jak moc toho víš o kvantové mechanice?
+\vfill
+\end{slidecontent}
+\end{frame}
+}
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+Proč organizujeme tuto akci?
+\end{slidetitle}
+\begin{slidecontent}
+\begin{itemize}
+\item Nespokojenost s univerzitním systémem
+\begin{itemize}
+\item Je nastavený jen pro neurotypické lidi.
+\item Věda slouží kapitálu a lidé na univerzitě jsou jen nástroje. Chtělx
+bychom, aby věda sloužila těm, kteří dělají vědu, a aby bylx v kontaktu s
+komunitou, které přímo pomáhají.
+\pause
+\end{itemize}
+\item Věříme, že jiná univerzita je možná.
+\begin{itemize}
+\item Pluriverzita?!?
+\item Inspirace: autonomní škola Zürich, Paulo Freire, anarchismus.
+\end{itemize}
+\end{itemize}
+\end{slidecontent}
+\end{frame}
+}
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+Co si slibujeme?
+\end{slidetitle}
+\begin{slidecontent}
+\begin{itemize}
+\item Sami se něco naučíme o~QM a~o~jejím učení.
+\item Bude to pro všechny zábava.
+\item Safe space pro učení se -- na vlastní kůži poznáme, že to \textbf{jde} jinak.
+\item Možná se najde někdo, kdo by se chtěl podílet na dalších podobných přednáškách/akcích.
+\end{itemize}
+\end{slidecontent}
+\end{frame}
+}
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+Anarchismus
+\end{slidetitle}
+\begin{slidecontent}
+\begin{itemize}
+\item Soulad prostředků a účelu.
+\pause
+\item Jaké jsou anarchistické prostředky/účely?
+\begin{itemize}
+\item Bourání hierarchií (i. e. někdo má moc nad někým jiným).
+\begin{itemize}
+\item Patriarchální nadvláda/sexismus; kredencialismus (někdo má diplom); ale i
+větší znalosti či „charisma”
+\end{itemize}
+\item Vzájemnost (vzájemná pomoc)
+\end{itemize}
+\end{itemize}
+\end{slidecontent}
+\end{frame}
+}
+
+
+
+
+
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{Background.png}}
+\begin{frame}[plain]
+\begin{slidetitle}
+Plán
+\end{slidetitle}
+\begin{slidecontent}
+\begin{itemize}
+\item Tohle představení
+\item Blok 1: kvantové stavy
+\item Blok 2: CHSH hra
+\item Potom: volná diskuse
+\item Mezitím: různé příspěvky
+\end{itemize}
+\end{slidecontent}
+\end{frame}
+}
+
+
+
+\end{document}
