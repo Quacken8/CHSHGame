@@ -12,8 +12,8 @@ SharedQubit = qubit.BellState(type=1)
 SharedDensityMatrix = np.outer(SharedQubit,SharedQubit)
 
 def IsSuccess(x,y,a,b):
-    A = x and y
-    B = a ^ b
+    A = x and y   #Logical and (denoted as ^)
+    B = a ^ b     #XOR         (denoted as \oplus)
     return A == B
 
 def OneRound(x,y,Shared=SharedDensityMatrix,verbosity=0):
