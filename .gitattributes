@@ -1,3 +1,4 @@
 *.xopp filter=lfs diff=lfs merge=lfs -text
 *.pdf filter=lfs diff=lfs merge=lfs -text
 *.xcf filter=lfs diff=lfs merge=lfs -text
+Plakat/Plakat_zadni.png filter=lfs diff=lfs merge=lfs -text
