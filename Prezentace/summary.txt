@@ -75,13 +75,27 @@ Metodika:
     * Ano, dokážeme! Vzpomínáte, jak pohybující se částice vyzařují elektromagnetické
       záření? To nám může poskytnout všechny informace o pohybu elektronů na orbitách
       kolem jader!
+        * anachronické přirovnání: gravitační vlny – gravitační interakce všech hmotných
+          předmětů "rozvlní prostor" a s dostatečně citlivými přístroji bychom dokázali
+          rekonstruovat, jak přesně se pohybovaly
+        * stejně tak teorie elektromagnetismu předvídá, že elektrony obíhající kolem středu
+          atomů by měly vyzařovat elektromagnetické záření – tentokrát mnohem silnější
+    * Skutečné pozorování:
         * podivnost: atomy v klidu nevyzařují žádné EM záření, a když je vybudíme, vyzařují
           jen záření o konkrétních, pevně daných vlnových délkách/frekvencích/barvách
-        * možné vysvětlení: elektrony se nepohybují jak se jim chce, ale mají pevně dané
-          orbity (tzv. orbitaly), kde "můžou být" a jiné, kde být "nesmí"
-          (jen heuristika, zatím nevíme proč by nemohly) a když mezi nimi přecházejí,
-          rozdíl energíí vyzáří
+        * netušíme, jak to vysvětlit! zkusíme si tipnout, jak by to *zhruba* mohlo být:
+        * elektrony se nemůžou pohybovat jakkoliv, ale mají pevně dané "poličky",
+          na kterých sedí, a jinde být nesmí
+        * každá "polička" má nějakou energii
+        * dokud jsou na "poličkách", nic nevyzařují
+        * když se přesunou mezi "poličkami", přijmou nebo vyzáří rozdíl energií
 
+    * tahle teorie funguje!
+        * = dobře predikuje pozorované vlnové délky
+        * ≠ víme, co přesně se v atomu děje (a abych vás zbytečně nenapínal – to se přesně
+          v průběhu této přednášky nedozvíme, vydáme se ale na cestu, která k odpovědi
+          vede, a v případě zájmu můžeme např. zorganizovat přednášku, kde se k tomu dostaneme)
+        * dovoluje 
 
     * Má-li člověk dostatek trpělivosti a baví-li ho chemie, dokáže na základě tohoto
       předpokladu postupně přijít na to, jaké orbitaly jsou povolené pro každý prvek
@@ -99,9 +113,14 @@ Metodika:
 
     ⇒ PAUZA?
         → POEZIE!
+        → SUDOKU?
 
     > elektron ~ atom stříbra ~ neutron
 
 
     ⇒ vektory žblektory
+
+
+
+
 
