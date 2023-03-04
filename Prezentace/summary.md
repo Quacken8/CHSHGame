@@ -67,25 +67,12 @@
     * tahle teorie funguje!
         * = dobře predikuje pozorované vlnové délky
         * ≠ víme, co přesně se v atomu děje (a abych vás zbytečně nenapínal – to se přesně v průběhu této přednášky nedozvíme, vydáme se ale na cestu, která k odpovědi vede, a v případě zájmu můžeme např. zorganizovat přednášku, kde se k tomu dostaneme)
-        * dovoluje 
+      * můžeme projít všechny známé prvky a sepsat si, jaké "poličky" mají, zajímavé pozorování:
+        * do každého orbitalu se vejdou dva elektrony
+        * orbitaly můžou být různě vysoko (→ roste jejich energie)a různě prostorově orientované
+        * magnetické štěpení → je elektron malý magnetek?
 
-    * Má-li člověk dostatek trpělivosti a baví-li ho chemie, dokáže na základě tohoto
-      předpokladu postupně přijít na to, jaké orbitaly jsou povolené pro každý prvek
-        * mně chemie nebaví
-        * proto použijeme poznatky lidí, kteří se tím zabývali:
-            * do každého orbitalu se vejdou dva elektrony
-            * orbitaly můžou být různě vysoko (→ roste jejich energie)a různě prostorově orientované
-
-    * magnetické štěpení → je elektron malý magnetek?
-
-    * ⇒ PAUZA?
-      * → POEZIE!
-      * → SUDOKU?
-
-    * elektron ~ atom stříbra ~ neutron
-
-
-    ⇒ vektory žblektory
+    * PAUZA → SUDOKU!
 
 
 # "Magnetická vlastnost elektronu"
@@ -105,3 +92,64 @@
 
   * pokud jste skeptici, má to jednu drobnou nevýhodu – musíte mi *věřit*, že jsou elektrony takhle uspořádané, teorii, která by to přesně předpovídala totiž zatím nemáme
   * naštěstí proton & neutron mají taky magnetický moment, asi tisíckrát slabší, takže skeptici si místo stříbra nebo draslíku můžou představovat neutrony
+
+
+  * vezmeme pec se stříbrem / draslíkem / zdroj neutronů
+  * přidáme kolimátor, magnet, stínítko
+  * můžeme testovat!
+
+  * ale pozor: lidský mozek je velmi dobrý ve vysvětlování pozorovaných jevů pomocí našich přesvědčení o tom, jak svět funguje
+    * když máme nějakou představu, že něco funguje takhle a takhle, a pozorujeme nějaký jev, náš mozek se bude snažit použít naše současné porozumění, aby vysvětlil, proč se to stalo – a to i v případě, že pozorování ve skutečnosti *není* v souladu s naší představou světa
+    * TODO vymyslet příklad
+    * proto je důležité stanovit *hypotézu*, co se stane!!!
+    * pojďme si tedy říci, jaké výsledky očekáváme
+
+  * hypotézy:
+    * v případě, že atom není magnetický:
+      * poletí přímo dopředu, bude se chovat stejně se zapnutým i vypnutým magnetickým polem
+    * v případě, že atom je magnetický:
+      * magnetické pole jednak přitahuje celý atom, a jednak se ho snaží otočit
+      * elektron je "jednoduché posouvat, těžké otáčet":
+        * atom odkloněn jiným směrem, ale nestihne se otočit
+        * náhodný směr → normální distribuce
+
+      * elektron je "jednoduché otáčet, těžké posouvat":
+        * bez tření:
+          * atom osciluje
+          * náhodný směr → normální distribuce
+
+        * se třením:
+          * atom se zarovná shodně s polem
+          * náhodný směr → normální distribuce
+  
+  * výsledek:
+    * dva body!!!
+    * intenzita 50% : 50%
+    * → atom se velmi rychle zarovná shodně nebo opačně s magnetickým polem
+
+  * tohle podivné chování si zaslouží prozkoumat detailněji!
+    * zkusíme přidat jeden další magnet
+    * tam, kde byl jeden z bodů, přidáme štěrbinu a necháme paprsek proletět k dalšímu magnetu
+    * druhý magnet lze otočit o libovolný úhel $\alpha$
+    * za druhý magnet přidáme stínítko
+    * měříme, jaká intenzita je na stínítku v závislosti na $\alpha$
+
+    * hypotézy:
+      * magnet se natočí tím pólem, kterým je blíž → intenzita 100 % : 0 %
+      * ???
+
+    * výsledek:
+      * $(\cos^2 \tfrac{\alpha}{2})$ : $(1 - \cos^2 \tfrac{\alpha}{2})$
+  
+    * vysvětlení: ???!?!
+    * když člověk neví, často se vyplatí udělat cimrmanovský "úkrok stranou"
+    * proto se teď podíváme na něco *úplně jiného*!
+
+
+# Polarizace světla & vektory
+ * TODO
+
+
+
+# Provázaný stav
+ * TODO
