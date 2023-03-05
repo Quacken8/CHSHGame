@@ -145,10 +145,25 @@
     * když člověk neví, často se vyplatí udělat cimrmanovský "úkrok stranou"
     * proto se teď podíváme na něco *úplně jiného*!
 
+# Vektory
+  1. vektor jako šipka
+  2. vektor jako $n$-tice čísel
+  3. délka vektoru (Pythagorova věta), jednotkový vektor
+  4. délka vektoru v nějakém směru (projekce, geometricky)
+  5. vektor otočený nějakým směrem ($\sin$, $\cos$)
+  6. délka vektoru ve směru jiného (jednotkového) vektoru (skalární součin)
 
-# Polarizace světla & vektory
- * TODO
+# Polarizace
+  * TODO
+ 
 
+# Sekvenční SG s více kroky
+  * TODO
+  * atom "zapomene" v jakém byl stavu
+
+# Interpretace
+  * TODO
+  *
 
 
 # Provázaný stav
