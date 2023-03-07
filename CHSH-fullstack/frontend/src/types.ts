@@ -1,4 +1,4 @@
-import { getContext } from "svelte";
+import { getContext, setContext } from "svelte";
 import { writable, type Writable } from "svelte/store";
 import { Connection } from "./connection";
 
@@ -12,11 +12,13 @@ export interface AppState {
 }
 
 export const createAppState = (): Writable<AppState> => {
-  return writable({
-    page: "lobby",
+  const s = writable<AppState>({
+    page: "gameModeSelect",
     role: "client",
     connection: new Connection(),
   });
+  setContext('app-state', s);
+  return s;
 }
 
 export const getAppState = (): Writable<AppState> | undefined => {
