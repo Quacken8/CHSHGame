@@ -39,6 +39,7 @@
 </script>
 
 <div class="full">
+<div>
 <h1>Salónek</h1>
 
 {#if isCreatingSession}
@@ -111,6 +112,7 @@
 	{/if}
 {/if}
 
+</div>
 </div>
 
 <style>
