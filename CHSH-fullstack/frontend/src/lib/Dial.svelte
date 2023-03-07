@@ -28,12 +28,14 @@
 <style>
 	:root {
 		--angle: 180deg;
-		--size: 400px;
-		--clock-offset: 20px;
+		--size: 50vmin;
+		--point-inset: 4vmin;
+        --point-radius: 1.5vmin;
 	}
 
 	input {
 		width: 2em;
+        font-size: 1.25em;
 		text-align: center;
 	}
 
@@ -92,7 +94,7 @@
 		position: absolute;
 		left: calc(50% - 2.5px);
 		top: 50%;
-		height: 48%;
+		height: calc(45%);
 		width: 5px;
 		background: black;
 	}
@@ -100,7 +102,7 @@
 	.needle:after {
 		content: '';
 		position: absolute;
-		top: calc(98% + 5px);
+		top: calc(95% + 5px);
 		left: 50%;
 		height: 10px;
 		width: 10px;
@@ -115,17 +117,18 @@
 		transform-origin: center center;
 	}
 
+
 	.points {
 		position: absolute;
 		z-index: 2;
-		width: 26px;
-		height: 26px;
+		width:  calc(2*var(--point-radius));
+		height: calc(2*var(--point-radius));
 		background: #777;
-		left: calc((var(--size) / 2) - 13px);
-		top: var(--clock-offset);
+		left: calc((var(--size) / 2) - var(--point-radius));
+		top: var(--point-inset);
 		border-radius: 100%;
-		-webkit-transform-origin: 50% calc(var(--size) / 2 - var(--clock-offset));
-		transform-origin: 50% calc(var(--size) / 2 - var(--clock-offset));
+		-webkit-transform-origin: 50% calc(var(--size) / 2 - var(--point-inset));
+		transform-origin: 50% calc(var(--size) / 2 - var(--point-inset));
 	}
 	.point-0 {
 		-webkit-transform: rotate(0deg);
@@ -175,4 +178,12 @@
 		-webkit-transform: rotate(330deg);
 		transform: rotate(330deg);
 	}
+
+    @media only screen and (max-width: 501px) {
+    :root {
+		--angle: 180deg;
+		--size: 65vmin;
+		--point-inset: 6vmin;
+        --point-radius: 2vmin;    }
+    }
 </style>

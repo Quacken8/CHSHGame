@@ -30,7 +30,7 @@
     Přišel ti |{recievedBit}⟩
     </div>
     <div class = "measuredQBit">
-    Změřils |{measuredQBit}⟩
+    Naměřeno |{measuredQBit}⟩
     </div>
 
     <div class ="replyTitle">
@@ -68,7 +68,7 @@
     justify-content: center;
     background-color: brown;
     width: 50vw;
-    height: 50vh;
+    height: 60vh;
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -114,6 +114,18 @@
 
 button {
     width: 100%;
+}
+
+/* Settings for either desktop, or phone*/
+@media only screen and (min-width: 501px) {
+
+}
+
+@media only screen and (max-width: 501px) {
+.dialBox {
+    width: 80vmin;
+}
+
 }
 
 </style>
