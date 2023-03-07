@@ -4,15 +4,17 @@
         faHeart,
         faHeartCrack
     } from "@fortawesome/free-solid-svg-icons";
-    export let connected = true;
+	import { getAppState } from "../types";
+    const appState = getAppState()
+    $:lastHeartbeat = $appState.connection.lastHeartbeat
 </script>
 
 <div>
-    <p>Stav připojení: 
-        {#if connected}
-        OK <Fa icon={faHeart}/>
+    <p>Stav:
+        {#if Date.now() - lastHeartbeat < 1000}
+        <Fa icon={faHeart}/>
         {:else}
-        ?? <Fa icon={faHeartCrack}/>
+        <Fa icon={faHeartCrack}/>
         {/if}
     </p>
 </div>
