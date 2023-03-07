@@ -30,12 +30,12 @@
 		--angle: 180deg;
 		--size: 50vmin;
 		--point-inset: 4vmin;
-        --point-radius: 1.5vmin;
+		--point-radius: 1.5vmin;
 	}
 
 	input {
 		width: 2em;
-        font-size: 1.25em;
+		font-size: 1.25em;
 		text-align: center;
 	}
 
@@ -117,12 +117,11 @@
 		transform-origin: center center;
 	}
 
-
 	.points {
 		position: absolute;
 		z-index: 2;
-		width:  calc(2*var(--point-radius));
-		height: calc(2*var(--point-radius));
+		width: calc(2 * var(--point-radius));
+		height: calc(2 * var(--point-radius));
 		background: #777;
 		left: calc((var(--size) / 2) - var(--point-radius));
 		top: var(--point-inset);
@@ -179,11 +178,12 @@
 		transform: rotate(330deg);
 	}
 
-    @media only screen and (max-width: 501px) {
-    :root {
-		--angle: 180deg;
-		--size: 65vmin;
-		--point-inset: 6vmin;
-        --point-radius: 2vmin;    }
-    }
+	@media only screen and (max-width: 501px) {
+		:root {
+			--angle: 180deg;
+			--size: 65vmin;
+			--point-inset: 6vmin;
+			--point-radius: 2vmin;
+		}
+	}
 </style>
