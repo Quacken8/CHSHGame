@@ -1,25 +1,29 @@
 <script lang="ts">
 	import catdance from '../assets/breakdance-cat-electronic-jazz.gif';
+	import { getAppState } from '../types';
 
-	let sessionid: string;
+	const appState = getAppState();
+
+	$: sessionId$ = $appState?.connection.sessionId;
+	$: sessionId = $sessionId$;
+
 	let isCreatingSession: boolean = false;
 
-	const joinSession = (id: string) => {
-		let a = 1;
-		console.log('Join Session: TODO');
-		//Michal's code to join sessions here
+	const joinSession = (id: number | undefined) => {
+		if (id === undefined) return;
+		isFindingSession = true;
+		$appState?.connection.joinSession(+id);
 	};
 
 	const createSession = (): void => {
-		isCreatingSession = !isCreatingSession;
-		console.log('Create Session: TODO');
-		//Michal's code to create sessions here
+		isCreatingSession = !isCreatingSession; // FIXME why
+		console.log($appState)
+		$appState?.connection.createSession();
 	};
 
 	const cancelSession = (): void => {
-		isCreatingSession = !isCreatingSession;
-		console.log('Cancelled Session: TODO');
-		//Michal's code to cancel the creation of a session here
+		isCreatingSession = !isCreatingSession; // FIXME why
+		// TODO
 	};
 
 	let isJoiningSession: boolean = false;
@@ -28,14 +32,6 @@
 	};
 
 	let isFindingSession: boolean = true;
-	const toggleFinding = (id: string) => {
-		if (!isFindingSession) {
-			joinSession(id);
-		}
-		isFindingSession = !isFindingSession;
-
-		console.log('Finding Session...');
-	};
 </script>
 
 <div class="full">
@@ -45,6 +41,7 @@
 		{#if isCreatingSession}
 			<div>
 				<p class="message">Čekání na připojení Boba...</p>
+				<p class="message">Číslo sezení: {sessionId}</p>
 
 				<img
 					class="image"
@@ -78,16 +75,16 @@
 						<p class="message">Zadej id hry:</p>
 					</div>
 
-					<input bind:value={sessionid} />
+					<input bind:value={sessionId} />
 
 					<br />
 
 					<div>
-						<button class="btn1" on:click={() => toggleFinding(sessionid)}>Hledej</button>
+						<button class="btn1" on:click={() => joinSession(sessionId)}>Hledej</button>
 					</div>
 				{:else}
 					<div>
-						<p class="message">Hledám hru Alice s id: {sessionid}</p>
+						<p class="message">Hledám hru Alice s id: {sessionId}</p>
 
 						<img
 							class="image"
@@ -99,7 +96,7 @@
 					<br />
 
 					<div>
-						<button class="btn1" on:click={() => toggleFinding(sessionid)}>Zpět</button>
+						<button class="btn1" on:click={() => isFindingSession = false}>Zpět</button>
 					</div>
 				{/if}
 

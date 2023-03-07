@@ -132,7 +132,7 @@ export class Connection {
   }
 
 	createSession() {
-		if (this.sessionId !== undefined) return;
+		if (this.sessionId.value !== undefined) return;
 		this.sendRequest({ message: 'init-session' });
 	}
 
