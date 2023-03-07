@@ -129,10 +129,10 @@ input {
 .points {
 	position: absolute;
     z-index: 2;
-	width: 10px;
-	height: 10px;
+	width: 26px;
+	height: 26px;
 	background: #777;
-	left: calc((var(--size)/2) - 5px   );
+	left: calc((var(--size)/2) - 13px   );
 	top: var(--clock-offset);
 	border-radius: 100%;
 	-webkit-transform-origin: 50% calc(var(--size)/2 - var(--clock-offset));

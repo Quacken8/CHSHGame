@@ -66,8 +66,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr 0.5fr 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px; 
+    grid-column-gap: 6px;
+    grid-row-gap: 3px; 
 }
 
 
