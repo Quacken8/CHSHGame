@@ -35,13 +35,15 @@ const HEARTBEAT_DELAY = 1_000;
 
 export class Connection {
 	socket: WebSocket;
-	sessionId: number | undefined;
-	open: boolean;
+
+	sessionId: number | undefined = undefined;
+	open: boolean = false;
+  state: "not-in-session" | "not-paired" | "paired" = "not-in-session";
+  lastHeartbeat: number = 0;
 	heartbeatInterval: number = -1;
 
 	constructor() {
 		this.createSocket();
-		this.open = false;
 		(window as any).connection = this;
 	}
 
@@ -52,16 +54,23 @@ export class Connection {
 		// once the socket opens, marks it as open and starts a heartbeat message
 		this.socket.addEventListener('open', () => {
 			console.log('Connected!');
+
 			this.open = true;
-			this.heartbeatInterval = setInterval(() => this.sendMessage({ purpose: "heartbeat" }), HEARTBEAT_DELAY);
+			this.heartbeatInterval = setInterval(
+				() => this.sendMessage({ purpose: 'heartbeat' }),
+				HEARTBEAT_DELAY
+			);
 		});
 
 		// once the socket closes, update app state and try to reconnect
 		this.socket.addEventListener('close', () => {
 			console.log('Disconnected!');
+
 			this.open = false;
 			this.sessionId = undefined;
-      clearInterval(this.heartbeatInterval);
+      this.state = "not-in-session";
+
+			clearInterval(this.heartbeatInterval);
 			this.createSocket();
 		});
 
@@ -76,13 +85,50 @@ export class Connection {
 
 	private onResponse(str: string) {
 		const response: Response = JSON.parse(str);
-		console.log('Message recieved', response);
 
-		if (response.message === 'in-session') {
-			this.sessionId = response.content.sid;
-			console.log('In session', this.sessionId);
+		switch (response.message) {
+			case 'not-in-session': {
+				this.sessionId = undefined;
+        this.state = 'not-in-session';
+				break;
+			}
+
+			case 'in-session': {
+				this.sessionId = response.content.sid;
+        this.state = 'not-paired';
+				break;
+			}
+
+      case 'not-paired': {
+        this.state = 'not-paired';
+        break;
+      }
+
+      case 'successfully-paired': {
+        this.state = 'paired';
+        break;
+      }
+
+      case 'message': {
+        this.state = 'paired';
+        this.onMessage(JSON.parse(response.content.msg));
+        break;
+      }
+
+			default: {
+				console.log('Response recieved', response);
+				break;
+			}
 		}
 	}
+
+  onMessage(message: Message) {
+    switch (message.purpose) {
+      case 'heartbeat': {
+        this.lastHeartbeat = Date.now();
+      }
+    }
+  }
 
 	createSession() {
 		if (this.sessionId !== undefined) return;
