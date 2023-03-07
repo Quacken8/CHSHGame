@@ -38,6 +38,7 @@
 	};
 </script>
 
+<div class="full">
 <h1>Salónek</h1>
 
 {#if isCreatingSession}
@@ -109,6 +110,8 @@
 		{/if}
 	{/if}
 {/if}
+
+</div>
 
 <style>
 	.message {
