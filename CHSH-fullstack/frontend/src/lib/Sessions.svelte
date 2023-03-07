@@ -7,6 +7,12 @@
 	$: sessionId$ = $appState?.connection.sessionId;
 	$: sessionId = $sessionId$;
 
+	$: state = $appState?.connection.state;
+	$: paired = $state === 'paired';
+	$: if (paired) {
+		appState?.update((s) => ({ ...s, page: 'gameModeSelect' }));
+	}
+
 	let isCreatingSession: boolean = false;
 
 	const joinSession = (id: number | undefined) => {
@@ -17,7 +23,7 @@
 
 	const createSession = (): void => {
 		isCreatingSession = !isCreatingSession; // FIXME why
-		console.log($appState)
+		console.log($appState);
 		$appState?.connection.createSession();
 	};
 
@@ -96,7 +102,7 @@
 					<br />
 
 					<div>
-						<button class="btn1" on:click={() => isFindingSession = false}>Zpět</button>
+						<button class="btn1" on:click={() => (isFindingSession = false)}>Zpět</button>
 					</div>
 				{/if}
 
