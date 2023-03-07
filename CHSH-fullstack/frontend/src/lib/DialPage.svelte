@@ -1,5 +1,5 @@
 <script lang="ts">
-
+    import Dial from './Dial.svelte'
 </script>
 
 
