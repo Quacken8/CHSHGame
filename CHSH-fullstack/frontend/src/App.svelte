@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
   import svelteLogo from './assets/svelte.svg'
   import Counter from './lib/Counter.svelte'
+	import { createAppState } from './types';
+
+  const appState = createAppState();
 </script>
 
 <main>

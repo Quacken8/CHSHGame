@@ -1,21 +1,21 @@
 /**
 * Initializes new session
 */
-interface InitSessionRequest {
+export interface InitSessionRequest {
 	message: "init-session",
 }
 
 /**
 * Requests to leave current session
 */
-interface LeaveSessionRequest {
+export interface LeaveSessionRequest {
 	message: "leave-session",
 }
 
 /**
 * Requests to join a session
 */
-interface JoinSessionRequest {
+export interface JoinSessionRequest {
 	message: "join-session",
 	content: {
 		sid: number,
@@ -25,7 +25,7 @@ interface JoinSessionRequest {
 /**
 * Sends message to the other client in a paired session
 */
-interface MsgRequest {
+export interface MsgRequest {
 	message: "msg",
 	content: {
 		msg: string,
@@ -35,7 +35,7 @@ interface MsgRequest {
 /**
 * User is present in a session (sid)
 */
-interface InSessionResponse {
+export interface InSessionResponse {
 	message: "in-session",
 	content: {
 		sid: number,
@@ -45,28 +45,28 @@ interface InSessionResponse {
 /**
 * User is not in any session
 */
-interface NotInSessionResponse {
+export interface NotInSessionResponse {
 	message: "not-in-session",
 }
 
 /**
 * User can not create session at this time
 */
-interface CanNotCreateSessionResponse {
+export interface CanNotCreateSessionResponse {
 	message: "can-not-create-session",
 }
 
 /**
 * Session ended, user is no longer in session
 */
-interface SessionEndResponse {
+export interface SessionEndResponse {
 	message: "session-end",
 }
 
 /**
 * Error specified by (info) data
 */
-interface ErrorResponse {
+export interface ErrorResponse {
 	message: "error",
 	content: {
 		info: string,
@@ -76,7 +76,7 @@ interface ErrorResponse {
 /**
 * User was paired in session (sid) and is given name (name)
 */
-interface SuccessfullyPairedResponse {
+export interface SuccessfullyPairedResponse {
 	message: "successfully-paired",
 	content: {
 		sid: number,
@@ -87,7 +87,7 @@ interface SuccessfullyPairedResponse {
 /**
 * Session (sid) is full
 */
-interface SessionFullResponse {
+export interface SessionFullResponse {
 	message: "session-full",
 	content: {
 		sid: number,
@@ -97,14 +97,14 @@ interface SessionFullResponse {
 /**
 * User is not in paired session
 */
-interface NotPairedResponse {
+export interface NotPairedResponse {
 	message: "not-paired",
 }
 
 /**
 * Message from the other client in pairing
 */
-interface MessageResponse {
+export interface MessageResponse {
 	message: "message",
 	content: {
 		msg: string,
