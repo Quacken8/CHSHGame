@@ -6,12 +6,12 @@
     } from "@fortawesome/free-solid-svg-icons";
 	import { getAppState } from "../types";
     const appState = getAppState()
-    $:lastHeartbeat = $appState.connection.lastHeartbeat
+    $:lastHeartbeat = $appState?.connection.lastHeartbeat
 </script>
 
 <div>
     <p>Stav:
-        {#if Date.now() - lastHeartbeat < 1000}
+        {#if ( Date.now() - Number(lastHeartbeat) ) < 1000}
         <Fa icon={faHeart}/>
         {:else}
         <Fa icon={faHeartCrack}/>

@@ -16,7 +16,6 @@
 		appState!.update((s) => ({ ...s, page: 'gameModeWaiting' }));
 	}
 
-
 	let isCreatingSession: boolean = false;
 
 	const joinSession = (id: number | undefined) => {
@@ -46,82 +45,101 @@
 	};
 
 	let isFindingSession: boolean = true;
+
+	let isRules: boolean = true;
+	const toggleRules = () => {
+		isRules = !isRules;
+	};
 </script>
 
 <div class="full">
 	<div>
 		<h1>Salónek</h1>
+		{#if isRules}
+			{#if isCreatingSession}
+				<div>
+					<p class="message">Čekání na připojení Boba...</p>
+					<p class="message">Číslo sezení: {sessionId}</p>
 
-		{#if isCreatingSession}
-			<div>
-				<p class="message">Čekání na připojení Boba...</p>
-				<p class="message">Číslo sezení: {sessionId}</p>
+					<img
+						class="image"
+						alt="Kočka točící se na jedné tlapce jako při breakdance."
+						src={catdance}
+					/>
+				</div>
 
-				<img
-					class="image"
-					alt="Kočka točící se na jedné tlapce jako při breakdance."
-					src={catdance}
-				/>
-			</div>
+				<br />
+
+				<div>
+					<button class="btn1" on:click={cancelSession}>Zpět</button>
+				</div>
+			{:else}
+				{#if !isJoiningSession}
+					<div>
+						<button class="btn1" on:click={createSession}>Vytvoř hru (Alice)</button>
+					</div>
+				{/if}
+
+				{#if !isJoiningSession}
+					<br />
+					<div>
+						<button class="btn1" on:click={toggleJoining}>Připoj se ke hře (Bob)</button>
+					</div>
+				{/if}
+
+				{#if isJoiningSession}
+					{#if isFindingSession}
+						<div>
+							<p class="message">Zadej id hry:</p>
+						</div>
+
+						<input bind:value={sessionId} />
+
+						<br />
+
+						<div>
+							<button class="btn1" on:click={() => joinSession(sessionId)}>Hledej</button>
+						</div>
+					{:else}
+						<div>
+							<p class="message">Hledám hru Alice s id: {sessionId}</p>
+
+							<img
+								class="image"
+								alt="Kočka točící se na jedné tlapce jako při breakdance."
+								src={catdance}
+							/>
+						</div>
+
+						<br />
+
+						<div>
+							<button class="btn1" on:click={() => (isFindingSession = false)}>Zpět</button>
+						</div>
+					{/if}
+
+					{#if isFindingSession && isJoiningSession}
+						<br />
+
+						<div>
+							<button class="btn1" on:click={toggleJoining}>Zpět</button>
+						</div>
+					{/if}
+				{/if}
+			{/if}
 
 			<br />
-
 			<div>
-				<button class="btn1" on:click={cancelSession}>Zpět</button>
+				<button class="btn1" on:click={toggleRules}>Pravidla</button>
 			</div>
 		{:else}
-			{#if !isJoiningSession}
-				<div>
-					<button class="btn1" on:click={createSession}>Vytvoř hru (Alice)</button>
-				</div>
-			{/if}
+			<div>
+				<p>Vysvětlení pravidel</p>
+			</div>
 
-			{#if !isJoiningSession}
-				<br />
-				<div>
-					<button class="btn1" on:click={toggleJoining}>Připoj se ke hře (Bob)</button>
-				</div>
-			{/if}
-
-			{#if isJoiningSession}
-				{#if isFindingSession}
-					<div>
-						<p class="message">Zadej id hry:</p>
-					</div>
-
-					<input bind:value={sessionId} />
-
-					<br />
-
-					<div>
-						<button class="btn1" on:click={() => joinSession(sessionId)}>Hledej</button>
-					</div>
-				{:else}
-					<div>
-						<p class="message">Hledám hru Alice s id: {sessionId}</p>
-
-						<img
-							class="image"
-							alt="Kočka točící se na jedné tlapce jako při breakdance."
-							src={catdance}
-						/>
-					</div>
-
-					<br />
-
-					<div>
-						<button class="btn1" on:click={() => (isFindingSession = false)}>Zpět</button>
-					</div>
-				{/if}
-
-				{#if isFindingSession && isJoiningSession}
-					<br />
-
-					<div>
-						<button class="btn1" on:click={toggleJoining}>Zpět</button>
-					</div>
-				{/if}
-			{/if}
+			<div>
+				<button class="btn1" on:click={toggleRules}>Zpět</button>
+			</div>
 		{/if}
 	</div>
 </div>

@@ -1,14 +1,33 @@
 <script lang="ts">
 	import catdance from '../assets/breakdance-cat-electronic-jazz.gif';
+	import Footer from './Footer.svelte';
+	import { getAppState } from '../types';
+
+	const appState = getAppState();
+
+	$: sessionId$ = $appState?.connection.sessionId;
+	$: sessionId = $sessionId$;
+    let isGameModeChosen: boolean = false;
+    let gameMode: string;
+
+	const goToMeasure = (mode: string): void => {
+		appState!.update((s) => ({ ...s, page: mode }));
+	};
+
+    $: if ( isGameModeChosen ) {
+        goToMeasure(gameMode);
+    }
 </script>
 
-<div class="full">
+<div class="centering">
 	<div>
 		<h1>Čekání na Alici...</h1>
 
 		<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
 	</div>
 </div>
+
+<Footer />
 
 <style>
 	.image {
