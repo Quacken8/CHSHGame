@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Dial from './Dial.svelte';
+	import Footer from './Footer.svelte';
 
-	export let angleNum=0;
+	export let angleNum = 0;
 	export let sentBit = '?';
 	export let measuredQBit = '?';
 	export let recievedBit = '?';
@@ -14,52 +15,46 @@
 	}
 </script>
 
-<main class="wholePage">
-	<div class="title">Kvantové měření</div>
+<main>
+	<div class="centering">
+		<div>
+			<div><h2>Kvantové měření</h2></div>
 
-	<div class="dialBox">
-		<Dial bind:angleNum />
+			<div class="dialBox">
+				<Dial bind:angleNum />
+			</div>
+
+			<div class="bits">
+				<div class="recievedClassicalBit">
+					Přišel ti |{recievedBit}⟩
+				</div>
+				<div class="measuredQBit">
+					Naměřeno |{measuredQBit}⟩
+				</div>
+
+				<div class="replyTitle">Pošli:</div>
+
+				<div class="replyUpBit">
+					<button class="btn1" on:click={_sendUp}> |↑⟩ </button>
+				</div>
+				<div class="replyDownBit">
+					<button class="btn1" on:click={_sendDown}> |↓⟩</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="bits">
-		<div class="recievedClassicalBit">
-			Přišel ti |{recievedBit}⟩
-		</div>
-		<div class="measuredQBit">
-			Naměřeno |{measuredQBit}⟩
-		</div>
-
-		<div class="replyTitle">Pošli:</div>
-
-		<div class="replyUpBit">
-			<button on:click={_sendUp}> |↑⟩ </button>
-		</div>
-		<div class="replyDownBit">
-			<button on:click={_sendDown}> |↓⟩</button>
-		</div>
-	</div>
+	<Footer />
 </main>
 
 <style>
-	.wholePage {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		align-content: stretch;
-	}
-
-	.title {
-		font-size: 30px;
-		font-weight: bolder;
-	}
-
 	.dialBox {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: brown;
+		background-color: var(--primary-color);
 		width: 50vw;
-		height: 60vh;
+		height: 50vh;
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}

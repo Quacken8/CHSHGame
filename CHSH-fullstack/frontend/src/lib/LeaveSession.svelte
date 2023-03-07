@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { getAppState } from '../types';
+
+    let appState = getAppState();
+
 	const leaveSession = (): void => {
 		//Here goes Michal's code to leave session
 		//Here goes some code to route back to Sessions.svelte
+    	appState.update((s) => ({ ...s, page: 'lobby' }));
 	};
 </script>
 

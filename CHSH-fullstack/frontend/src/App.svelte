@@ -3,7 +3,7 @@
 	import { createAppState } from './types';
 	import './app.css';
 	import GameModeSelect from './lib/GameModeSelect.svelte';
-  import DialPage from './lib/DialPage.svelte';
+	import DialPage from './lib/DialPage.svelte';
 	import Results from './lib/Results.svelte';
 
 	const appState = createAppState();
@@ -16,10 +16,9 @@
 		<Sessions />
 	{:else if $appState.page == 'gameModeSelect'}
 		<GameModeSelect />
-  {:else if $appState.page == 'measurement'}
+	{:else if $appState.page == 'measurement'}
 		<DialPage />
 	{:else if $appState.page == 'results'}
 		<Results />
 	{/if}
-
 </main>

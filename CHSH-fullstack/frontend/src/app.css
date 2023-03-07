@@ -43,10 +43,10 @@ a:hover {
 	display: grid;
 	justify-items: center;
 	place-items: center;
-	height: 80vh;
+	height: 85vh;
 }
 .footer {
-	height: 20vh;
+	height: 15vh;
 	place-items: center;
 }
 
