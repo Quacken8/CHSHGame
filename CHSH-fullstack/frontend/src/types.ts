@@ -3,14 +3,14 @@ import { cell, type Cell } from './cell';
 import { Connection } from './connection';
 
 export interface AppState {
-	page: 'lobby' | 'gameModeSelect' | 'measurement' | 'results';
-	role: 'server' | 'client';
+	page: 'lobby' | 'gameModeSelect' | 'gameModeWaiting' | 'measurement' | 'results';
+	role: 'server' | 'client' | 'none';
 	connection: Connection;
 }
 
 export const createAppState = (): Cell<AppState> => {
 	const s = cell<AppState>({
-		page: 'gameModeSelect',
+		page: 'lobby',
 		role: 'client',
 		connection: new Connection()
 	});

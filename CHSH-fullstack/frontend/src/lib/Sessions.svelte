@@ -9,9 +9,13 @@
 
 	$: state = $appState?.connection.state;
 	$: paired = $state === 'paired';
-	$: if (paired) {
-		appState?.update((s) => ({ ...s, page: 'gameModeSelect' }));
+	$: if (paired && $appState?.role === 'server') {
+		appState!.update((s) => ({ ...s, page: 'gameModeSelect' }));
 	}
+	$: if (paired && $appState?.role === 'client') {
+		appState!.update((s) => ({ ...s, page: 'gameModeWaiting' }));
+	}
+
 
 	let isCreatingSession: boolean = false;
 
@@ -19,17 +23,21 @@
 		if (id === undefined) return;
 		isFindingSession = true;
 		$appState?.connection.joinSession(+id);
+		appState!.update((s) => ({ ...s, role: 'client' }));
+		//TODO: make sure that if the joining is aborted, role goes back to 'none'
 	};
 
 	const createSession = (): void => {
 		isCreatingSession = !isCreatingSession; // FIXME why
 		console.log($appState);
 		$appState?.connection.createSession();
+		appState!.update((s) => ({ ...s, role: 'server' }));
 	};
 
 	const cancelSession = (): void => {
 		isCreatingSession = !isCreatingSession; // FIXME why
 		// TODO
+		appState!.update((s) => ({ ...s, role: 'none' }));
 	};
 
 	let isJoiningSession: boolean = false;

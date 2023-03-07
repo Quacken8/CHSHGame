@@ -6,7 +6,7 @@
 
 	const oneGame = (): void => {
 		console.log('Starting one game...');
-		appState.update((s) => ({ ...s, page: 'measurement' }));
+		appState!.update((s) => ({ ...s, page: 'measurement' }));
 	};
 	const hundredGames = (): void => {
 		console.log('Starting 100 games...');
