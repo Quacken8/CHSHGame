@@ -1,8 +1,6 @@
 import { getContext, setContext } from 'svelte';
-import { writable, type Writable } from 'svelte/store';
+import { cell, type Cell } from './cell';
 import { Connection } from './connection';
-
-const WS_SERVER_URL = 'wss://quantum-be.dsrod.cz/qbit';
 
 export interface AppState {
 	page: 'lobby' | 'gameModeSelect' | 'measurement' | 'results';
@@ -10,8 +8,8 @@ export interface AppState {
 	connection: Connection;
 }
 
-export const createAppState = (): Writable<AppState> => {
-	const s = writable<AppState>({
+export const createAppState = (): Cell<AppState> => {
+	const s = cell<AppState>({
 		page: 'gameModeSelect',
 		role: 'client',
 		connection: new Connection()
@@ -20,6 +18,6 @@ export const createAppState = (): Writable<AppState> => {
 	return s;
 };
 
-export const getAppState = (): Writable<AppState> | undefined => {
+export const getAppState = (): Cell<AppState> | undefined => {
 	return getContext('app-state');
 };

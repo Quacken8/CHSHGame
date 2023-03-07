@@ -1,3 +1,4 @@
+import { cell, type Cell } from './cell';
 import type {
 	CanNotCreateSessionResponse,
 	ErrorResponse,
@@ -34,13 +35,13 @@ const WS_SERVER_URL = 'wss://quantum-be.dsrod.cz/qbit';
 const HEARTBEAT_DELAY = 1_000;
 
 export class Connection {
-	socket: WebSocket;
+	socket!: WebSocket;
+	private heartbeatInterval = -1;
 
-	sessionId: number | undefined = undefined;
-	open: boolean = false;
-  state: "not-in-session" | "not-paired" | "paired" = "not-in-session";
-  lastHeartbeat: number = 0;
-	heartbeatInterval: number = -1;
+	sessionId = cell<number | undefined>(undefined);
+	open = cell(false);
+  state = cell<"not-in-session" | "not-paired" | "paired">("not-in-session");
+  lastHeartbeat = cell(0);
 
 	constructor() {
 		this.createSocket();
@@ -55,7 +56,7 @@ export class Connection {
 		this.socket.addEventListener('open', () => {
 			console.log('Connected!');
 
-			this.open = true;
+			this.open.value = true;
 			this.heartbeatInterval = setInterval(
 				() => this.sendMessage({ purpose: 'heartbeat' }),
 				HEARTBEAT_DELAY
@@ -66,9 +67,9 @@ export class Connection {
 		this.socket.addEventListener('close', () => {
 			console.log('Disconnected!');
 
-			this.open = false;
-			this.sessionId = undefined;
-      this.state = "not-in-session";
+			this.open.value = false;
+			this.sessionId.value = undefined;
+      this.state.value = "not-in-session";
 
 			clearInterval(this.heartbeatInterval);
 			this.createSocket();
@@ -88,29 +89,29 @@ export class Connection {
 
 		switch (response.message) {
 			case 'not-in-session': {
-				this.sessionId = undefined;
-        this.state = 'not-in-session';
+				this.sessionId.value = undefined;
+        this.state.value = 'not-in-session';
 				break;
 			}
 
 			case 'in-session': {
-				this.sessionId = response.content.sid;
-        this.state = 'not-paired';
+				this.sessionId.value = response.content.sid;
+        this.state.value = 'not-paired';
 				break;
 			}
 
       case 'not-paired': {
-        this.state = 'not-paired';
+        this.state.value = 'not-paired';
         break;
       }
 
       case 'successfully-paired': {
-        this.state = 'paired';
+        this.state.value = 'paired';
         break;
       }
 
       case 'message': {
-        this.state = 'paired';
+        this.state.value = 'paired';
         this.onMessage(JSON.parse(response.content.msg));
         break;
       }
@@ -125,7 +126,7 @@ export class Connection {
   onMessage(message: Message) {
     switch (message.purpose) {
       case 'heartbeat': {
-        this.lastHeartbeat = Date.now();
+        this.lastHeartbeat.value = Date.now();
       }
     }
   }
