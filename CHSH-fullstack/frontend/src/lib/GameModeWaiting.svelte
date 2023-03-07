@@ -1,16 +1,15 @@
 <script lang="ts">
 	import catdance from '../assets/breakdance-cat-electronic-jazz.gif';
 	import Footer from './Footer.svelte';
-	import { getAppState } from '../types';
+	import { getAppState } from '../types'; 
+    import type { pagetype } from '../types';
 
 	const appState = getAppState();
 
-	$: sessionId$ = $appState?.connection.sessionId;
-	$: sessionId = $sessionId$;
     let isGameModeChosen: boolean = false;
-    let gameMode: string;
+    let gameMode: pagetype;
 
-	const goToMeasure = (mode: string): void => {
+	const goToMeasure = (mode: pagetype): void => {
 		appState!.update((s) => ({ ...s, page: mode }));
 	};
 

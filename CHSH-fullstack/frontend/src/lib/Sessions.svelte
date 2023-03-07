@@ -128,10 +128,12 @@
 				{/if}
 			{/if}
 
+		{#if !isCreatingSession && !isJoiningSession}
 			<br />
 			<div>
 				<button class="btn1" on:click={toggleRules}>Pravidla</button>
 			</div>
+		{/if}
 		{:else}
 			<div>
 				<p>Vysvětlení pravidel</p>
