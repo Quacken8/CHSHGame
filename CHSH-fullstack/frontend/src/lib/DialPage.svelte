@@ -1,5 +1,17 @@
 <script lang="ts">
 	import Dial from "./Dial.svelte";
+
+    export let angleNum:number
+    export let sentBit = "?";
+    export let measuredQBit = "?";
+    export let recievedBit = "?";
+
+    function _sendUp(){
+        sentBit = "up"
+    }
+    function _sendDown(){
+        sentBit = "down"
+    }
 </script>
 
 
@@ -10,15 +22,15 @@
 </div>
 
 <div class = "dialBox">
-    <Dial/>
+    <Dial bind:angleNum/>
 </div>
 
 <div class = "bits">
     <div class = "recievedClassicalBit">
-    Přišel ti ↑
+    Přišel ti |{recievedBit}⟩
     </div>
     <div class = "measuredQBit">
-    Změřils |?⟩
+    Změřils |{measuredQBit}⟩
     </div>
 
     <div class ="replyTitle">
@@ -26,10 +38,10 @@
     </div>
 
     <div class = "replyUpBit">
-        <button> |↑⟩ </button>
+        <button on:click={_sendUp}> |↑⟩ </button>
     </div>
     <div class="replyDownBit">
-        <button> |↓⟩</button>
+        <button on:click={_sendDown}> |↓⟩</button>
     </div>
 
 </div>

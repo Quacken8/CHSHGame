@@ -6,10 +6,13 @@
 
   const appState = createAppState();
   connect(appState);
+
+  let angleNum:number
+
 </script>
 
 <main>
 
-<DialPage/>
+<DialPage bind:angleNum/>
 
 </main>
