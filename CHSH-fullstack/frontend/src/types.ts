@@ -6,14 +6,14 @@ import { Connection } from "./connection";
 const WS_SERVER_URL = "wss://quantum-be.dsrod.cz/qbit";
 
 export interface AppState {
-  page: "initial" | "connected-menu" | "measure" | "result";
+  page: "lobby" | "gameModeSelect" | "measurement" | "results";
   role: "server" | "client";
   connection: Connection;
 }
 
 export const createAppState = (): Writable<AppState> => {
   return writable({
-    page: "initial",
+    page: "lobby",
     role: "client",
     connection: new Connection(),
   });

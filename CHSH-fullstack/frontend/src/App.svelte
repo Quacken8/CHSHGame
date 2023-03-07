@@ -2,6 +2,8 @@
 	import Sessions from './lib/Sessions.svelte';
 	import { createAppState } from './types';
 	import './app.css';
+	//import GameModeSelect from './lib/GameModeSelect.svelte';
+  import Results from './lib/Results.svelte';
 
 	const appState = createAppState();
 
@@ -9,9 +11,19 @@
 </script>
 
 <main>
-	<!--
-<DialPage bind:angleNum/>
--->
-
-	<Sessions />
+  <Results />
 </main>
+
+<!--  
+<main>
+{#if $appState.page == "lobby"}
+<Sessions />
+{:else if $appState.page == "gameModeSelect"}
+<GameModeSelect />
+{:else if $appState.page == "measurement"}
+<DialPage />
+{:else if $appState.page == "results"}
+<Results />
+{/if}
+</main>
+-->
