@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Dial from './Dial.svelte'
+	import Dial from "./Dial.svelte";
 </script>
 
 
@@ -10,7 +10,7 @@
 </div>
 
 <div class = "dialBox">
-Dial
+    <Dial/>
 </div>
 
 <div class = "bits">

@@ -1,20 +1,89 @@
 <script lang="ts">
 let angleString: string = "0";
+export let angleNum: number;
 $: angleNum = +angleString;
 $: angleOffset = angleNum + 180;
 $: angleDeg = String(angleOffset) + "deg";
 </script>
 
-<style>
+<div class = "boxAroundDialAndInput">
 
+
+<div class = "boxAroundDial">
+<div class="outer">
+    <div class="points point-0"  on:keydown={() => {}} on:click={() => console.log("a", (angleString = "00")) }></div>
+	<div class="points point-1"  on:keydown={() => {}} on:click={() => console.log("a", (angleString = "30")) }></div>
+	<div class="points point-2 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "60")) }></div>
+	<div class="points point-3 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "90")) }></div>
+	<div class="points point-4 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "120")) }></div>
+	<div class="points point-5 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "150")) }></div>
+	<div class="points point-6 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "180")) }></div>
+	<div class="points point-7 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "210")) }></div>
+	<div class="points point-8 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "240")) }></div>
+	<div class="points point-9 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "270")) }></div>
+	<div class="points point-10" on:keydown={() => {}} on:click={() => console.log("a", (angleString = "300")) }></div>
+	<div class="points point-11" on:keydown={() => {}} on:click={() => console.log("a", (angleString = "330")) }></div>
+    <div class="needle" style="--angle: {angleDeg}" ></div>
+</div>
+</div>
+
+<div class="boxAroundInput">
+    <div class="smallerBoxAroundInput">
+    <input type="range" min="0" max="360" bind:value={angleString} class = "inputAngle">
+    <input bind:value={angleString}>
+    </div>
+</div>
+
+</div>
+
+<style>
 :root {
     --angle: 180deg;
     --size: 400px;
     --clock-offset: 20px
 }
+.smallerBoxAroundInput{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boxAroundDialAndInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.boxAroundDial{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.boxAroundInput{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputAngle {
+    position: absolute;
+}
 
 .outer {
-    position: relative;
+    position: absolute;
     display: inline-block;
     height: var(--size);
     width:  var(--size);
@@ -60,9 +129,6 @@ $: angleDeg = String(angleOffset) + "deg";
     transform-origin: center center;
 }
 
-
-
-
 .points {
 	position: absolute;
     z-index: 2;
@@ -90,24 +156,3 @@ $: angleDeg = String(angleOffset) + "deg";
 
 
 </style>
-
-
-<div class="outer">
-    <div class="points point-0"  on:keydown={() => {}} on:click={() => console.log("a", (angleString = "00")) }></div>
-	<div class="points point-1"  on:keydown={() => {}} on:click={() => console.log("a", (angleString = "30")) }></div>
-	<div class="points point-2 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "60")) }></div>
-	<div class="points point-3 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "90")) }></div>
-	<div class="points point-4 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "120")) }></div>
-	<div class="points point-5 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "150")) }></div>
-	<div class="points point-6 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "180")) }></div>
-	<div class="points point-7 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "210")) }></div>
-	<div class="points point-8 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "240")) }></div>
-	<div class="points point-9 " on:keydown={() => {}} on:click={() => console.log("a", (angleString = "270")) }></div>
-	<div class="points point-10" on:keydown={() => {}} on:click={() => console.log("a", (angleString = "300")) }></div>
-	<div class="points point-11" on:keydown={() => {}} on:click={() => console.log("a", (angleString = "330")) }></div>
-    <div class="needle" style="--angle: {angleDeg}" ></div>
-</div>
-
-<br>
-
-<input bind:value={angleString}>
