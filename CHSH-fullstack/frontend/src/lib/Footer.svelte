@@ -20,6 +20,7 @@
 	.footer {
 		display: flex;
         padding-bottom: 0vh;
+		justify-content: center;
 	}
 	.footer-item {
 		margin: 5px;

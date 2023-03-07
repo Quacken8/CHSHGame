@@ -54,7 +54,7 @@
 		justify-content: center;
 		background-color: var(--primary-color);
 		width: 50vw;
-		height: 50vh;
+		height: 60vh;
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}
@@ -107,6 +107,7 @@
 	@media only screen and (max-width: 501px) {
 		.dialBox {
 			width: 80vmin;
+			height: 50vh;
 		}
 	}
 </style>
