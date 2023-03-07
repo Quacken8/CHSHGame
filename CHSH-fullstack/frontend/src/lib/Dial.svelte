@@ -28,10 +28,9 @@ $: angleDeg = String(angleOffset) + "deg";
 </div>
 
 <div class="boxAroundInput">
-    <div class="smallerBoxAroundInput">
-    <input type="range" min="0" max="360" bind:value={angleString} class = "inputAngle">
-    <input bind:value={angleString}>
-    </div>
+
+    <input bind:value={angleString} class = "inputAngle">
+
 </div>
 
 </div>
@@ -42,12 +41,10 @@ $: angleDeg = String(angleOffset) + "deg";
     --size: 400px;
     --clock-offset: 20px
 }
-.smallerBoxAroundInput{
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+
+input {
+    width: 2em;
+    text-align: center;
 }
 
 .boxAroundDialAndInput{
