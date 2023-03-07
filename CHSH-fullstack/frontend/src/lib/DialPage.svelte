@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Dial from './Dial.svelte';
 
-	export let angleNum: number;
+	export let angleNum=0;
 	export let sentBit = '?';
 	export let measuredQBit = '?';
 	export let recievedBit = '?';

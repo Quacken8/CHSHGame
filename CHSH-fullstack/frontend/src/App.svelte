@@ -16,10 +16,8 @@
 		<Sessions />
 	{:else if $appState.page == 'gameModeSelect'}
 		<GameModeSelect />
-	<!--
   {:else if $appState.page == 'measurement'}
 		<DialPage />
-  -->
 	{:else if $appState.page == 'results'}
 		<Results />
 	{/if}
