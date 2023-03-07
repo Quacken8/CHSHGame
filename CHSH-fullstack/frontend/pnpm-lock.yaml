@@ -1,15 +1,21 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fortawesome/free-solid-svg-icons': ^6.3.0
   '@sveltejs/vite-plugin-svelte': ^2.0.2
   '@tsconfig/svelte': ^3.0.0
   prettier: ^2.8.4
   prettier-plugin-svelte: ^2.9.0
   svelte: ^3.55.1
   svelte-check: ^2.10.3
+  svelte-fa: ^3.0.3
   tslib: ^2.5.0
   typescript: ^4.9.3
   vite: ^4.1.0
+
+dependencies:
+  '@fortawesome/free-solid-svg-icons': 6.3.0
+  svelte-fa: 3.0.3
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 2.0.3_svelte@3.55.1+vite@4.1.4
@@ -221,6 +227,20 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fortawesome/fontawesome-common-types/6.3.0:
+    resolution: {integrity: sha512-4BC1NMoacEBzSXRwKjZ/X/gmnbp/HU5Qqat7E8xqorUtBFZS+bwfGH5/wqOC2K6GV0rgEobp3OjGRMa5fK9pFg==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dev: false
+
+  /@fortawesome/free-solid-svg-icons/6.3.0:
+    resolution: {integrity: sha512-x5tMwzF2lTH8pyv8yeZRodItP2IVlzzmBuD1M7BjawWgg9XAvktqJJ91Qjgoaf8qJpHQ8FEU9VxRfOkLhh86QA==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.3.0
+    dev: false
 
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
@@ -795,6 +815,10 @@ packages:
       - stylus
       - sugarss
     dev: true
+
+  /svelte-fa/3.0.3:
+    resolution: {integrity: sha512-GIikJjcVCD+5Y/x9hZc2R4gvuA0gVftacuWu1a+zVQWSFjFYZ+hhU825x+QNs2slsppfrgmFiUyU9Sz9gj4Rdw==}
+    dev: false
 
   /svelte-hmr/0.15.1_svelte@3.55.1:
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
