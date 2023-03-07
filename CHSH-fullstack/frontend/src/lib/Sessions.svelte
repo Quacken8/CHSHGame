@@ -39,54 +39,12 @@
 </script>
 
 <div class="full">
-<div>
-<h1>Salónek</h1>
-
-{#if isCreatingSession}
 	<div>
-		<p class="message">Čekání na připojení Boba...</p>
+		<h1>Salónek</h1>
 
-		<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
-	</div>
-
-	<br />
-
-	<div>
-		<button class="btn1" on:click={cancelSession}>Zpět</button>
-	</div>
-{:else}
-	{#if !isJoiningSession}
-		<div>
-			<button class="btn1" on:click={createSession}>Vytvoř hru (Alice)</button>
-		</div>
-	{/if}
-
-	<br />
-
-	{#if !isJoiningSession}
-		<div>
-			<button class="btn1" on:click={toggleJoining}>Připoj se ke hře (Bob)</button>
-		</div>
-	{/if}
-
-	<br />
-
-	{#if isJoiningSession}
-		{#if isFindingSession}
+		{#if isCreatingSession}
 			<div>
-				<p class="message">Zadej id hry:</p>
-			</div>
-
-			<input bind:value={sessionid} />
-
-			<br />
-
-			<div>
-				<button class="btn1" on:click={() => toggleFinding(sessionid)}>Hledej</button>
-			</div>
-		{:else}
-			<div>
-				<p class="message">Hledám hru Alice s id: {sessionid}</p>
+				<p class="message">Čekání na připojení Boba...</p>
 
 				<img
 					class="image"
@@ -98,21 +56,63 @@
 			<br />
 
 			<div>
-				<button class="btn1" on:click={() => toggleFinding(sessionid)}>Zpět</button>
+				<button class="btn1" on:click={cancelSession}>Zpět</button>
 			</div>
+		{:else}
+			{#if !isJoiningSession}
+				<div>
+					<button class="btn1" on:click={createSession}>Vytvoř hru (Alice)</button>
+				</div>
+			{/if}
+
+			{#if !isJoiningSession}
+				<br />
+				<div>
+					<button class="btn1" on:click={toggleJoining}>Připoj se ke hře (Bob)</button>
+				</div>
+			{/if}
+
+			{#if isJoiningSession}
+				{#if isFindingSession}
+					<div>
+						<p class="message">Zadej id hry:</p>
+					</div>
+
+					<input bind:value={sessionid} />
+
+					<br />
+
+					<div>
+						<button class="btn1" on:click={() => toggleFinding(sessionid)}>Hledej</button>
+					</div>
+				{:else}
+					<div>
+						<p class="message">Hledám hru Alice s id: {sessionid}</p>
+
+						<img
+							class="image"
+							alt="Kočka točící se na jedné tlapce jako při breakdance."
+							src={catdance}
+						/>
+					</div>
+
+					<br />
+
+					<div>
+						<button class="btn1" on:click={() => toggleFinding(sessionid)}>Zpět</button>
+					</div>
+				{/if}
+
+				{#if isFindingSession && isJoiningSession}
+					<br />
+
+					<div>
+						<button class="btn1" on:click={toggleJoining}>Zpět</button>
+					</div>
+				{/if}
+			{/if}
 		{/if}
-
-		{#if isFindingSession && isJoiningSession}
-			<br />
-
-			<div>
-				<button class="btn1" on:click={toggleJoining}>Zpět</button>
-			</div>
-		{/if}
-	{/if}
-{/if}
-
-</div>
+	</div>
 </div>
 
 <style>
