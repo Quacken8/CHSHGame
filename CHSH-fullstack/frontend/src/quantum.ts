@@ -33,7 +33,7 @@ class FourVector {
     }
     add(vec: FourVector) {
         for (let i = 0; i < this.components.length; i++) {
-            this.components[i] += vec[i];
+            this.components[i] += vec.components[i];
         }
         return this;
     }
@@ -45,13 +45,13 @@ function korneckerProduct(vec1: number[], vec2: number[]) {
 function partialTrace(fourvector: FourVector, vec: number[], aliceMeasures: boolean) {
     let toReturn: number[];
     if (aliceMeasures) {
-        let x = vec[0] * fourvector[0] + vec[1] * fourvector[2];
-        let y = vec[0] * fourvector[1] + vec[1] * fourvector[3];
+        let x = vec[0] * fourvector.components[0] + vec[1] * fourvector.components[2];
+        let y = vec[0] * fourvector.components[1] + vec[1] * fourvector.components[3];
         return [x, y];
     }
     else {
-        let x = vec[0] * fourvector[0] + vec[1] * fourvector[1];
-        let y = vec[0] * fourvector[2] + vec[1] * fourvector[3];
+        let x = vec[0] * fourvector.components[0] + vec[1] * fourvector.components[1];
+        let y = vec[0] * fourvector.components[2] + vec[1] * fourvector.components[3];
         return [x, y];
     }
 }
@@ -68,8 +68,7 @@ export class EntangledQuBits {
         // measure
         let rad = degToRad(angleOfMeasurement);
         let measurementVector: number[];
-        measurementVector[0] = Math.sin(rad);
-        measurementVector[1] = Math.cos(rad);
+				measurementVector = [Math.sin(rad), Math.cos(rad)];
         let AliceIsMeasuring = (whoMeasures == "Bob") ? true : false;
 
         let pt = partialTrace(this.multistate, measurementVector, AliceIsMeasuring);
