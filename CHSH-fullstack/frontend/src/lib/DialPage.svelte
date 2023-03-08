@@ -49,12 +49,16 @@
 	let haveMeasured: boolean = false;
 	let haveSelected: boolean = false;
 
-	let Q = new EntangledQubits(initialQ);
-	$: if (appState?.value.role === 'server') {
-		//Alice is the keeper of the qubits
-		//Alice generates a and b and saves them to the store
+	//TODO don't keep updating random bits
+	if (appState?.value.role === 'server') {
+		//Alice generates a and b and saves them to the store (this must happen only once)
 		gameState?.update((s) => ({ ...s, a: Math.random() < 0.5 }));
 		gameState?.update((s) => ({ ...s, b: Math.random() < 0.5 }));
+	}
+
+	//Alice is the keeper of the qubits, but Bob can have his (useless) Qubit too
+	let Q = new EntangledQubits(initialQ);
+	$: if (appState?.value.role === 'server') {
 		//Alice uses a and x (while Bob uses b and y)
 		given = a!;
 		selected = x!;

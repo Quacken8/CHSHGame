@@ -71,16 +71,16 @@ export class EntangledQuBits {
         let rad = degToRad(angleOfMeasurement);
         let measurementVector: number[];
         measurementVector = [Math.sin(rad), Math.cos(rad)];
-        let AliceIsMeasuring = (whoMeasures == "Alice");
+        let isAliceMeasuring = (whoMeasures == "Alice");
 
-        let pt = partialTrace(this.multistate, measurementVector, AliceIsMeasuring);
+        let pt = partialTrace(this.multistate, measurementVector, isAliceMeasuring);
 
         let probabilityOfMeasurement = pt[0] * pt[0] + pt[1] * pt[1];
         let outcome = (probabilityOfMeasurement < Math.random());
 
         // now change the state
         let newState: FourVector;
-        if (AliceIsMeasuring) {
+        if (isAliceMeasuring) {
             if (outcome) {
                 newState = korneckerProduct(measurementVector, pt)
             }
