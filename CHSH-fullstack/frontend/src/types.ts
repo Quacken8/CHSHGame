@@ -7,7 +7,11 @@ export type ServerType = 'server' | 'client' | 'none';
 
 export interface GameState {
 	gameMode: 'one-game' | 'many-games' | 'none';
-	system?: [number, number, number, number];
+	a?: boolean;
+	b?: boolean;
+	x?: boolean;
+	y?: boolean;
+	entangledPair?: [number, number, number, number];
 }
 
 export interface GameEvents {
@@ -25,7 +29,8 @@ export const createAppState = (): Cell<AppState> => {
 	const s = cell<AppState>({
 		page: 'lobby',
 		role: 'client',
-		connection: new Connection<GameState, GameEvents>({ gameMode: 'none' })
+		connection: new Connection<GameState, GameEvents>({ gameMode: 'none' }),
+		physics:
 	});
 	setContext('app-state', s);
 	return s;

@@ -11,7 +11,7 @@
 
 <div>
     <p>Stav:
-        {#if ( Date.now() - Number(lastHeartbeat) ) < 1000}
+        {#if ( Date.now() - Number(lastHeartbeat) ) < 1200}
         <Fa icon={faHeart}/>
         {:else}
         <Fa icon={faHeartCrack}/>

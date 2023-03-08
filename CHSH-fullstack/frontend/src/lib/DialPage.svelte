@@ -1,11 +1,25 @@
 <script lang="ts">
 	import Dial from './Dial.svelte';
 	import Footer from './Footer.svelte';
+	import { getAppState } from '../types';
+
+	const appState = getAppState();
+	
 
 	export let angleNum = 0;
 	export let sentBit = '?';
 	export let measuredQBit = '?';
 	export let recievedBit = '?';
+
+	$: gameState = $appState?.connection.data
+
+	$: a = $gameState?.a;
+	gameState?.update( (s) => ({...s,a: false}) )
+
+	if (appState?.value.role === 'server') {
+
+	} else if (appState?.value.role === 'client') {
+	}
 
 	function _sendUp() {
 		sentBit = 'up';
