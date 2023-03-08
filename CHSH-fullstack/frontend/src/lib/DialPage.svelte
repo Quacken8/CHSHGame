@@ -67,19 +67,18 @@
 
 		//Alice registers the guess x or y
 		$appState?.connection.addEventListener('pls-register', (params): void => {
-			console.log(String(params.who) +' sent me selected=' + String(params.value) + '.');
-			let key: string;
+			console.log(String(params.who) + ' sent me selected=' + String(params.value) + '.');
 			if (params.who == 'Alice') {
-				key = 'x';
+				gameState?.update((s) => ({ ...s, x: params.value }));
 			} else if (params.who == 'Bob') {
-				key = 'y';
+				gameState?.update((s) => ({ ...s, y: params.value }));
 			}
-			//console.log("Also printing the key value: " + String(key!))
-			gameState?.update((s) => ({ ...s, key: params.value }));
 		});
 		//Alice does either Alice's, or Bob's measurement
 		$appState?.connection.addEventListener('pls-measure', (params): void => {
-			console.log(String(params.who) + ' asked me to measure under angle alpha=' + String(params.angle) + '.');
+			console.log(
+				String(params.who) + ' asked me to measure under angle alpha=' + String(params.angle) + '.'
+			);
 			let res: boolean;
 			res = Q.measureOneQuBit(params.who, params.angle);
 			gameState?.update((s) => ({ ...s, resb: res }));

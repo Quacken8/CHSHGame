@@ -24,13 +24,11 @@
 	$: if (appState?.value.role === 'server') {
 		$appState?.connection.addEventListener('pls-register', (params): void => {
 			console.log(String(params.who) + ' sent me selected=' + String(params.value) + '.');
-			let key: string;
 			if (params.who == 'Alice') {
-				key = 'x';
+				gameState?.update((s) => ({ ...s, x: params.value }));
 			} else if (params.who == 'Bob') {
-				key = 'y';
+				gameState?.update((s) => ({ ...s, y: params.value }));
 			}
-			gameState?.update((s) => ({ ...s, key: params.value }));
 		});
 	}
 </script>
