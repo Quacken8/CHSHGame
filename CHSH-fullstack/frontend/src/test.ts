@@ -20,7 +20,7 @@ for (let i = 0; i < numberOfTests; i++) {
 
 	// recieve bits from charlie
 
-	var a: boolean = Math.random() < 0.5; // a floor of number between 0 and 1.99 is just a coin toss
+	var a: boolean = Math.random() < 0.5;
 	var b: boolean = Math.random() < 0.5;
 
     //Which angle are they going to measure?

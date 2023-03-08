@@ -2,7 +2,7 @@
 	import Dial from './Dial.svelte';
 	import Footer from './Footer.svelte';
 	import { getAppState } from '../types';
-	import { EntangledQuBits } from '../quantum';
+	import { EntangledQuBits as EntangledQubits } from '../quantum';
 	import { FourVector } from '../quantum';
 
 	const appState = getAppState();
@@ -49,9 +49,9 @@
 	let haveMeasured: boolean = false;
 	let haveSelected: boolean = false;
 
+	let Q = new EntangledQubits(initialQ);
 	$: if (appState?.value.role === 'server') {
 		//Alice is the keeper of the qubits
-		let Q = new EntangledQuBits(initialQ);
 		//Alice generates a and b and saves them to the store
 		gameState?.update((s) => ({ ...s, a: Math.random() < 0.5 }));
 		gameState?.update((s) => ({ ...s, b: Math.random() < 0.5 }));
@@ -82,7 +82,7 @@
 			let res: boolean;
 			res = Q.measureOneQubit(params.who, params.angle);
 			if (params.who == 'Alice') {
-				gameState?.update((s) => ({ ...s, resb: res }));
+				gameState?.update((s) => ({ ...s, resa: res }));
 			} else if (params.who == 'Bob') {
 				gameState?.update((s) => ({ ...s, resb: res }));
 			}
@@ -101,6 +101,7 @@
 	const measureAlpha = (alpha: number): void => {
 		let res: boolean;
 		if (appState?.value.role === 'server') {
+			Q.
 			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Alice' });
 		} else if (appState?.value.role === 'client') {
 			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Bob' });
