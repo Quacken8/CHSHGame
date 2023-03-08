@@ -42,9 +42,9 @@
 		console.log('givenText:' + givenText);
 		console.log('selectText:' + selectText);
 
-		$appState?.connection.addEventListener('pls-register-y-alice', (yy): void => {
+		$appState?.connection.addEventListener('pls-register-y-alice', (yy: boolean): void => {
 			console.log('Bob sent me y=' + String(yy) + '.');
-			gameState?.update((s) => ({ ...s, yy }));
+			gameState?.update((s) => ({ ...s, y: yy }));
 		});
 	} else if (appState?.value.role === 'client') {
 		given = b!;
@@ -65,7 +65,7 @@
 		if (appState?.value.role === 'server') {
 			gameState?.update((s) => ({ ...s, x: res }));
 		} else if (appState?.value.role === 'client') {
-			$appState?.connection.sendEvent('pls-register-y-alice', { y: y! });
+			$appState?.connection.sendEvent('pls-register-y-alice', res);
 		} else {
 			console.log('Error, role is none.');
 		}

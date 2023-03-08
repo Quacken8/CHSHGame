@@ -18,7 +18,7 @@ export interface GameState {
 
 export interface GameEvents {
 	'pls-measure-my-state-alice': { angle: number };
-	'pls-register-y-alice': {y: boolean};
+	'pls-register-y-alice': boolean;
 	'just-wanted-to-say-haiii': 'uwu';
 }
 
