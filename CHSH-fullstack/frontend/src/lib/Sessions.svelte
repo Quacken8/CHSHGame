@@ -50,6 +50,12 @@
 	const toggleRules = () => {
 		isRules = !isRules;
 	};
+
+	type rulePart = 'lore' | 'rules';
+	let rp: rulePart = 'lore';
+	const setRulePart = (part: rulePart): void => {
+		rp = part;
+	};
 </script>
 
 <div class="full">
@@ -128,16 +134,72 @@
 				{/if}
 			{/if}
 
-		{#if !isCreatingSession && !isJoiningSession}
-			<br />
-			<div>
-				<button class="btn1" on:click={toggleRules}>Pravidla</button>
-			</div>
-		{/if}
+			{#if !isCreatingSession && !isJoiningSession}
+				<br />
+				<div>
+					<button class="btn1" on:click={toggleRules}>Pravidla</button>
+				</div>
+			{/if}
 		{:else}
-			<div>
-				<p>Vysvětlení pravidel</p>
+			<div class="heading">
+				{#if rp === 'lore'}
+					<div class="item">
+						<p class="wasButton">Šlamastyka</p>
+					</div>
+					<div class="item">
+						<button class="btn1" on:click={() => setRulePart('rules')}>Návod</button>
+					</div>
+				{:else if rp === 'rules'}
+					<div class="item">
+						<button class="btn1" on:click={() => setRulePart('lore')}>Šlamastyka</button>
+					</div>
+					<div class="item">
+						<p class="wasButton">Návod</p>
+					</div>
+				{/if}
+				<div class="item">
+					<button class="btn1" on:click={toggleRules}>Zpět</button>
+				</div>
 			</div>
+
+			{#if rp === 'lore'}
+				<div>
+					<p>
+						Alice a Bob žijí každý na jiné planetě A a B. Jednoho dne do jejich sluneční soustavy
+						letí asteroid. A & B se bojí, že narazí do jejich planety, takže se podívají jestli
+						asteroid zasáhne jejich planety pomocí své pozorovatelny.
+					</p>
+					<p>
+						Pokud asteroid míří jen planetu Alice, tak je to v pořádku, Alice má proti-asteroidové
+						systémy, které se o to automaticky postarají. To samé s Bobem.
+					</p>
+
+					<p>
+						Ovšem pokud zasáhne obě planety, tak to znamená, že je to obří asteroid, a planetární
+						obranné systémy na to nestačí. Aby asteroid sestřelili, musí se použít meziplanetární
+						dělo. Alice a Bob mají oba meziplanetární dělo, ale v tom je ten háček: pokud vystřelí
+						oba najednou, tak se jejich střely strefí do sebe navzájem a nesestřelí asteroid.
+					</p>
+
+					<p>
+						Řešení je tedy jasné: pokud asteroid míří na *jen* A, *jen* B, nebo mimo, měli by A i B
+						nechat meziplanetární dělo ležet (nebo vystřelit oba najednou). Pokud asteroid míří na
+						obě planety, musí *jen jeden* z nich použít meziplanetární dělo. Pokud velký asteroid
+						nesestřelí, je po nich. Stejně tak, pokud použijí meziplanetární dělo na prázdný cíl,
+						nejspíš to zasáhne důležité družice, které potřebují k přežití.
+					</p>
+
+					<p>
+						Ale tady narážíme na problém: kvůli nedostatečným pozorovacím kapacitám nemůže Alice
+						vědět, jestli asteroid zasáhne Boba a Bob nemůže vědět, jestli zasáhne Alici. Oba navíc
+						nemají moc času na to spolu komunikovat. Jak se tedy mají zachovat?
+					</p>
+				</div>
+			{:else if rp === 'rules'}
+				<div>
+					<p>TODO</p>
+				</div>
+			{/if}
 
 			<div>
 				<button class="btn1" on:click={toggleRules}>Zpět</button>
@@ -154,5 +216,18 @@
 	.image {
 		width: 50vmin;
 		margin-bottom: 10px;
+	}
+
+	.heading {
+		display: inline-flex;
+	}
+
+	.item {
+		display: block;
+		margin: 0 1vmin;
+	}
+	.wasButton {
+		font-size: 1.2em;
+		margin-top: 4.8px;
 	}
 </style>
