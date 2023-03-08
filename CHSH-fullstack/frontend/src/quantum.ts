@@ -70,13 +70,13 @@ export class EntangledQuBits {
         // measure
         let rad = degToRad(angleOfMeasurement);
         let measurementVector: number[];
-				measurementVector = [Math.sin(rad), Math.cos(rad)];
-        let isAliceMeasuring = (whoMeasures == "Alice") ? true : false;
+        measurementVector = [Math.sin(rad), Math.cos(rad)];
+        let AliceIsMeasuring = (whoMeasures == "Alice");
 
         let pt = partialTrace(this.multistate, measurementVector, isAliceMeasuring);
 
         let probabilityOfMeasurement = pt[0] * pt[0] + pt[1] * pt[1];
-        let outcome = (probabilityOfMeasurement < Math.random()) ? true : false;
+        let outcome = (probabilityOfMeasurement < Math.random());
 
         // now change the state
         let newState: FourVector;
