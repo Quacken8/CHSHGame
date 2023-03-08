@@ -12,11 +12,12 @@
 	$: gameState = $appState?.connection.data;
 
 	//Given bits
-	$: a = $gameState?.a;
-	$: b = $gameState?.b;
-	//Selected bits
 	$: x = $gameState?.x;
 	$: y = $gameState?.y;
+	//Selected bits
+	$: a = $gameState?.a;
+	$: b = $gameState?.b;
+	//TODO change the role of selected & given bits
 	//Results of measurement for A and B
 	$: resa = $gameState?.resa;
 	$: resb = $gameState?.resb;
@@ -35,8 +36,8 @@
 	}
 
 	let selected: boolean;
-	let givenText: 'a' | 'b';
-	let selectText: 'x' | 'y';
+	let givenText: 'x' | 'y';
+	let selectText: 'a' | 'b';
 
 	let result: boolean;
 	let resultText: 'ano' | 'ne';
@@ -49,33 +50,36 @@
 	let haveMeasured: boolean = false;
 	let haveSelected: boolean = false;
 
-	//TODO don't keep updating random bits
 	if (appState?.value.role === 'server') {
-		//Alice generates a and b and saves them to the store (this must happen only once)
-		gameState?.update((s) => ({ ...s, a: Math.random() < 0.5 }));
-		gameState?.update((s) => ({ ...s, b: Math.random() < 0.5 }));
+		//Alice generates x and y and saves them to the store (this must happen only once)
+		let xrand: boolean = Math.random() < 0.5;
+		let yrand: boolean = Math.random() < 0.5;
+		console.log("Generating x and y: " + String(xrand) + " and " + String(yrand))
+		gameState?.update((s) => ({ ...s, x: xrand }));
+		gameState?.update((s) => ({ ...s, y: yrand })); 
 	}
 
 	//Alice is the keeper of the qubits, but Bob can have his (useless) Qubit too
 	let Q = new EntangledQubits(initialQ);
 	$: if (appState?.value.role === 'server') {
 		//Alice uses a and x (while Bob uses b and y)
-		given = a!;
-		selected = x!;
-		givenText = 'a';
-		selectText = 'x';
+		given = x!;
+		selected = a!;
+		givenText = 'x';
+		selectText = 'a';
 		result = resa!;
 		console.log('given:' + String(given));
 		console.log('givenText:' + givenText);
+		console.log('selected:' + String(selected));
 		console.log('selectText:' + selectText);
 
-		//Alice registers the guess x or y
+		//Alice registers the guess a or b
 		$appState?.connection.addEventListener('pls-register', (params): void => {
 			console.log(String(params.who) + ' sent me selected=' + String(params.value) + '.');
 			if (params.who == 'Alice') {
-				gameState?.update((s) => ({ ...s, x: params.value }));
+				gameState?.update((s) => ({ ...s, a: params.value }));
 			} else if (params.who == 'Bob') {
-				gameState?.update((s) => ({ ...s, y: params.value }));
+				gameState?.update((s) => ({ ...s, b: params.value }));
 			}
 		});
 		//Alice does either Alice's, or Bob's measurement
@@ -85,6 +89,7 @@
 			);
 			let res: boolean;
 			res = Q.measureOneQubit(params.who, params.angle);
+			console.log("Measured " + String(res))
 			if (params.who == 'Alice') {
 				gameState?.update((s) => ({ ...s, resa: res }));
 			} else if (params.who == 'Bob') {
@@ -92,11 +97,11 @@
 			}
 		});
 	} else if (appState?.value.role === 'client') {
-		given = b!;
-		selected = y!;
+		given = y!;
+		selected = b!;
 		result = resb!;
-		givenText = 'b';
-		selectText = 'y';
+		givenText = 'y';
+		selectText = 'b';
 		console.log('givenText:' + givenText);
 		console.log('selectText:' + selectText);
 	}
@@ -105,8 +110,11 @@
 	const measureAlpha = (alpha: number): void => {
 		let res: boolean;
 		if (appState?.value.role === 'server') {
-			Q.
-			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Alice' });
+			console.log("Measuring Alice.")
+			res = Q.measureOneQubit('Alice', alpha);
+			console.log("Measured " + String(res))
+			gameState?.update((s) => ({ ...s, resa: res }));
+			//$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Alice' });
 		} else if (appState?.value.role === 'client') {
 			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Bob' });
 		} else {
@@ -118,7 +126,7 @@
 
 	const sendSelected = (res: boolean): void => {
 		if (appState?.value.role === 'server') {
-			gameState?.update((s) => ({ ...s, x: res }));
+			gameState?.update((s) => ({ ...s, a: res }));
 		} else if (appState?.value.role === 'client') {
 			$appState?.connection.sendEvent('pls-register', { value: res, who: 'Bob' });
 		} else {
