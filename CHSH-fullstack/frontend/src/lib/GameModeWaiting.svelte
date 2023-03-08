@@ -2,14 +2,14 @@
 	import catdance from '../assets/breakdance-cat-electronic-jazz.gif';
 	import Footer from './Footer.svelte';
 	import { getAppState } from '../types'; 
-    import type { pagetype } from '../types';
+    import type { PageType } from '../types';
 
 	const appState = getAppState();
 
     let isGameModeChosen: boolean = false;
-    let gameMode: pagetype;
+    let gameMode: PageType;
 
-	const goToMeasure = (mode: pagetype): void => {
+	const goToMeasure = (mode: PageType): void => {
 		appState!.update((s) => ({ ...s, page: mode }));
 	};
 

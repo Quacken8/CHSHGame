@@ -1,6 +1,7 @@
 import type { Subscriber, Unsubscriber, Updater, Writable } from 'svelte/store';
 
 export interface Cell<T> extends Writable<T> {
+	unsubscribe(f: Subscriber<T>): boolean;
 	get value(): T;
 	set value(v: T);
 }
@@ -12,6 +13,9 @@ export function cell<T>(value: T): Cell<T> {
     f(value);
 		return () => subscribers.delete(f);
 	};
+	const unsubscribe = (f: Subscriber<T>): boolean => {
+		return subscribers.delete(f);
+	}
 	const set = (v: T) => {
 		value = v;
 		for (const f of subscribers) {
@@ -24,6 +28,7 @@ export function cell<T>(value: T): Cell<T> {
 
 	return {
 		subscribe,
+		unsubscribe,
 		set,
 		update,
 		get value() {
