@@ -1,6 +1,6 @@
 import { FourVector, EntangledQuBits } from "./quantum";
 
-var numberOfTests = 5000;
+const numberOfTests = 5000;
 
 var correctGuesses = 0.0;
 
@@ -24,7 +24,7 @@ for (let i = 0; i < numberOfTests; i++) {
     var AlicesSmartAndEntanglementInformedResponse = AliceMeasurementOutcome;
     var BobSmartAndEntanglementInformedResponse = BobMeasurementOutcome;
     
-    var didTheyDidTheThingProperly = (condition) ? true : false; // the FUCK is the condition idk man
+    var didTheyDidTheThingProperly = (condition); // the FUCK is the condition idk man
     if (didTheyDidTheThingProperly) {
         correctGuesses += 1.0;
     }
