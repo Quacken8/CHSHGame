@@ -30,7 +30,6 @@ export const createAppState = (): Cell<AppState> => {
 		page: 'lobby',
 		role: 'client',
 		connection: new Connection<GameState, GameEvents>({ gameMode: 'none' }),
-		physics:
 	});
 	setContext('app-state', s);
 	return s;
