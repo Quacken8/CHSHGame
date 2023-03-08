@@ -80,8 +80,12 @@
 				String(params.who) + ' asked me to measure under angle alpha=' + String(params.angle) + '.'
 			);
 			let res: boolean;
-			res = Q.measureOneQuBit(params.who, params.angle);
-			gameState?.update((s) => ({ ...s, resb: res }));
+			res = Q.measureOneQubit(params.who, params.angle);
+			if (params.who == 'Alice') {
+				gameState?.update((s) => ({ ...s, resb: res }));
+			} else if (params.who == 'Bob') {
+				gameState?.update((s) => ({ ...s, resb: res }));
+			}
 		});
 	} else if (appState?.value.role === 'client') {
 		given = b!;

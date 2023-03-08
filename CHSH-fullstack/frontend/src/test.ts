@@ -1,37 +1,58 @@
-import { FourVector, EntangledQuBits } from "./quantum";
+import { FourVector, EntangledQuBits } from './quantum';
 
-const numberOfTests = 5000;
+const numberOfTests = 100;
+
+let victory: boolean;
+const isWin = (x: boolean, y: boolean, a: boolean, b: boolean): boolean => {
+	let A: boolean = x && y; //Logical and
+	let B: boolean = (a && !b) || (!a && b); //XOR
+	return A == B;
+};
 
 var correctGuesses = 0.0;
 
 for (let i = 0; i < numberOfTests; i++) {
-    // create entangled pair
-    var initialState = FourVector(); // help what do i put here
-    var Qubits = new EntangledQuBits(initialState);
+    //https://en.wikipedia.org/wiki/CHSH_inequality#Optimal_quantum_strategy
+	// create entangled pair
+	const norm: number = 1 / Math.sqrt(2);
+	let initialState = new FourVector(norm, 0, 0, norm);
+	var Qubits = new EntangledQuBits(initialState);
 
-    // recieve bits from charlie
+	// recieve bits from charlie
 
-    var AliceBit = Math.floor(Math.random() * 2); // a floor of number between 0 and 1.99 is just a coin toss
-    var BobBit = Math.floor(Math.random() * 2);
+	var a: boolean = Math.random() < 0.5; // a floor of number between 0 and 1.99 is just a coin toss
+	var b: boolean = Math.random() < 0.5;
 
-    // measure according to whateverthefuck i dont understand the entanglement
+    //Which angle are they going to measure?
+	if (a == true) {
+		var anglea = 90; // |1>
+	} else {
+		var anglea = 0; // |+> = |0> - |1>
+	}
+	if (b == true) {
+		var angleb = 112.5;
+        // -sin(pi/8) |0> + cos(pi/8) |1>
+        // cos(5pi/8) |0> + cos(pi/8) |1>
+	} else {
+		var angleb = 67.5;
+        // sin(pi/8)  |0> + cos(pi/8) |1>
+        // cos(3pi/8) |0> + cos(pi/8) |1>
+	}
 
-    var angleOfMeasurementInDegs = 0; // ???? idk?
-    
-    var AliceMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs);
-    var BobMeasurementOutcome = Qubits.measureOneQuBit("Bob", angleOfMeasurementInDegs);
+	var resa = Qubits.measureOneQubit('Alice', anglea);
+	var resb = Qubits.measureOneQubit('Bob', angleb);
 
-    var AlicesSmartAndEntanglementInformedResponse = AliceMeasurementOutcome;
-    var BobSmartAndEntanglementInformedResponse = BobMeasurementOutcome;
-    
-    var didTheyDidTheThingProperly = (condition); // the FUCK is the condition idk man
-    if (didTheyDidTheThingProperly) {
-        correctGuesses += 1.0;
-    }
+	var x = resa;
+	var y = resb;
+
+	var didTheyDidTheThingProperly = isWin(x, y, a, b); // the FUCK is the condition idk man
+	if (didTheyDidTheThingProperly) {
+		correctGuesses += 1.0;
+	}
 }
-console.log("Correct guesses:");
+console.log('Correct guesses:');
 console.log(correctGuesses);
-console.log("Out of a total of:");
+console.log('Out of a total of:');
 console.log(numberOfTests);
-console.log("That is in percents:");
-console.log(correctGuesses / numberOfTests * 100.0); // oh boy i sure do hope there isnt anything funky regarding floats and ints here
+console.log('That is in percents:');
+console.log((correctGuesses / numberOfTests) * 100.0); // oh boy i sure do hope there isnt anything funky regarding floats and ints here

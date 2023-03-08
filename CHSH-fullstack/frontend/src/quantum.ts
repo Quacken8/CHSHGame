@@ -66,7 +66,7 @@ export class EntangledQuBits {
         this.multistate = multistate
     }
 
-    measureOneQuBit(whoMeasures: "Alice" | "Bob", angleOfMeasurement: number) {
+    measureOneQubit(whoMeasures: "Alice" | "Bob", angleOfMeasurement: number) {
         // measure
         let rad = degToRad(angleOfMeasurement);
         let measurementVector: number[];
