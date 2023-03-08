@@ -1,6 +1,7 @@
 import { getContext, setContext } from 'svelte';
 import { cell, type Cell } from './cell';
 import { Connection } from './connection';
+import { FourVector } from './quantum';
 
 export type PageType =  'lobby' | 'gameModeSelect' | 'gameModeWaiting' | 'measurement' | 'results';
 export type ServerType = 'server' | 'client' | 'none';
@@ -13,12 +14,16 @@ export interface GameState {
 	//Selected bits
 	x?: boolean;
 	y?: boolean;
+	//Results of measurement for Alice and Bob
+	resa?: boolean;
+	resb?: boolean;
+	//Maybe obsolete?
 	entangledPair?: [number, number, number, number];
 }
 
 export interface GameEvents {
-	'pls-measure-my-state-alice': { angle: number };
-	'pls-register-y-alice': boolean;
+	'pls-measure': { angle: number, who: "Alice" | "Bob" };
+	'pls-register': { value: boolean, who: "Alice" | "Bob" };
 	'just-wanted-to-say-haiii': 'uwu';
 }
 

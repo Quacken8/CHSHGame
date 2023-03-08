@@ -2,41 +2,43 @@ function degToRad(deg: number) {
     return deg / 180 * Math.PI
 }
 
-class FourVector {
-    components: [number, number, number, number];
-    constructor(x: number, y: number, z: number, w: number) {
-        this.components = [x, y, z, w];
-    }
+export class FourVector {
+	components: [number, number, number, number];
+	//x* |up> |up> + y * |up> |down> + z * |down>|up> + w* |down> |down>
+	constructor(x: number, y: number, z: number, w: number) {
+		this.components = [x, y, z, w];
+        //TODO normalise the input qubit automatically in case it was forgotten
+	}
 
-    dot(vec: FourVector) {
-        let toReturn = 0;
-        for (let i = 0; i < this.components.length; i++) {
-            toReturn += this.components[i] * vec.components[i]
-        }
-        return toReturn
-    }
+	dot(vec: FourVector) {
+		let toReturn = 0;
+		for (let i = 0; i < this.components.length; i++) {
+			toReturn += this.components[i] * vec.components[i];
+		}
+		return toReturn;
+	}
 
-    magnitudeSquared() {
-        return this.dot(this)
-    }
+	magnitudeSquared() {
+		return this.dot(this);
+	}
 
-    multiplyByNumber(number: number) {
-        for (let i = 0; i < this.components.length; i++) {
-            this.components[i] *= number;
-        }
-        return this
-    }
+	multiplyByNumber(number: number) {
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i] *= number;
+		}
+		return this;
+	}
 
-    normalize() {
-        let magnitude = Math.sqrt(this.magnitudeSquared());
-        this.multiplyByNumber(1 / magnitude);
-    }
-    add(vec: FourVector) {
-        for (let i = 0; i < this.components.length; i++) {
-            this.components[i] += vec.components[i];
-        }
-        return this;
-    }
+	normalize() {
+		let magnitude = Math.sqrt(this.magnitudeSquared());
+		this.multiplyByNumber(1 / magnitude);
+	}
+	add(vec: FourVector) {
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i] += vec.components[i];
+		}
+		return this;
+	}
 }
 
 function korneckerProduct(vec1: number[], vec2: number[]) {
@@ -64,21 +66,21 @@ export class EntangledQuBits {
         this.multistate = multistate
     }
 
-    measureOneQuBit(whoMeasures: string, angleOfMeasurement: number) {
+    measureOneQuBit(whoMeasures: "Alice" | "Bob", angleOfMeasurement: number) {
         // measure
         let rad = degToRad(angleOfMeasurement);
         let measurementVector: number[];
 				measurementVector = [Math.sin(rad), Math.cos(rad)];
-        let AliceIsMeasuring = (whoMeasures == "Bob") ? true : false;
+        let isAliceMeasuring = (whoMeasures == "Alice") ? true : false;
 
-        let pt = partialTrace(this.multistate, measurementVector, AliceIsMeasuring);
+        let pt = partialTrace(this.multistate, measurementVector, isAliceMeasuring);
 
         let probabilityOfMeasurement = pt[0] * pt[0] + pt[1] * pt[1];
         let outcome = (probabilityOfMeasurement < Math.random()) ? true : false;
 
         // now change the state
         let newState: FourVector;
-        if (AliceIsMeasuring) {
+        if (isAliceMeasuring) {
             if (outcome) {
                 newState = korneckerProduct(measurementVector, pt)
             }

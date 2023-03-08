@@ -2,11 +2,12 @@
 	import Dial from './Dial.svelte';
 	import Footer from './Footer.svelte';
 	import { getAppState } from '../types';
+	import { EntangledQuBits } from '../quantum';
+	import { FourVector } from '../quantum';
 
 	const appState = getAppState();
 
 	export let angleNum = 0;
-	export let measuredQBit = '?';
 
 	$: gameState = $appState?.connection.data;
 
@@ -16,7 +17,15 @@
 	//Selected bits
 	$: x = $gameState?.x;
 	$: y = $gameState?.y;
+	//Results of measurement for A and B
+	$: resa = $gameState?.resa;
+	$: resb = $gameState?.resb;
+	//Shared quantum state
+	const norm: number = 1 / Math.sqrt(2);
+	let initialQ = new FourVector(norm, 0, 0, norm);
+	//$: sharedQ = $gameState?.entangledPair;
 
+	//Values for this player
 	let given: boolean;
 	let givenDisplay: 'ano' | 'ne';
 	$: if (given == true) {
@@ -28,27 +37,56 @@
 	let selected: boolean;
 	let givenText: 'a' | 'b';
 	let selectText: 'x' | 'y';
+
+	let result: boolean;
+	let resultText: 'ano' | 'ne';
+	$: if (result == true) {
+		resultText = 'ano';
+	} else {
+		resultText = 'ne';
+	}
+
 	let haveMeasured: boolean = false;
 	let haveSelected: boolean = false;
 
 	$: if (appState?.value.role === 'server') {
+		//Alice is the keeper of the qubits
+		let Q = new EntangledQuBits(initialQ);
+		//Alice generates a and b and saves them to the store
 		gameState?.update((s) => ({ ...s, a: Math.random() < 0.5 }));
 		gameState?.update((s) => ({ ...s, b: Math.random() < 0.5 }));
+		//Alice uses a and x (while Bob uses b and y)
 		given = a!;
 		selected = x!;
 		givenText = 'a';
 		selectText = 'x';
+		result = resa!;
 		console.log('given:' + String(given));
 		console.log('givenText:' + givenText);
 		console.log('selectText:' + selectText);
 
-		$appState?.connection.addEventListener('pls-register-y-alice', (yy: boolean): void => {
-			console.log('Bob sent me y=' + String(yy) + '.');
-			gameState?.update((s) => ({ ...s, y: yy }));
+		//Alice registers the guess x or y
+		$appState?.connection.addEventListener('pls-register', (params): void => {
+			console.log(String(params.who) +' sent me selected=' + String(params.value) + '.');
+			let key: string;
+			if (params.who == 'Alice') {
+				key = 'x';
+			} else if (params.who == 'Bob') {
+				key = 'y';
+			}
+			gameState?.update((s) => ({ ...s, key: params.value }));
+		});
+		//Alice does either Alice's, or Bob's measurement
+		$appState?.connection.addEventListener('pls-measure', (params): void => {
+			console.log(String(params.who) + ' asked me to measure under angle alpha=' + String(params.angle) + '.');
+			let res: boolean;
+			res = Q.measureOneQuBit(params.who, params.angle);
+			gameState?.update((s) => ({ ...s, resb: res }));
 		});
 	} else if (appState?.value.role === 'client') {
 		given = b!;
 		selected = y!;
+		result = resb!;
 		givenText = 'b';
 		selectText = 'y';
 		console.log('givenText:' + givenText);
@@ -57,7 +95,15 @@
 
 	let measured: number;
 	const measureAlpha = (alpha: number): void => {
-		haveMeasured = !haveMeasured;
+		let res: boolean;
+		if (appState?.value.role === 'server') {
+			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Alice' });
+		} else if (appState?.value.role === 'client') {
+			$appState?.connection.sendEvent('pls-measure', { angle: alpha, who: 'Bob' });
+		} else {
+			console.log('Error, role is none.');
+		}
+		haveMeasured = true;
 		measured = alpha;
 	};
 
@@ -65,7 +111,7 @@
 		if (appState?.value.role === 'server') {
 			gameState?.update((s) => ({ ...s, x: res }));
 		} else if (appState?.value.role === 'client') {
-			$appState?.connection.sendEvent('pls-register-y-alice', res);
+			$appState?.connection.sendEvent('pls-register', { value: res, who: 'Bob' });
 		} else {
 			console.log('Error, role is none.');
 		}
@@ -103,7 +149,8 @@
 					</div>
 				{:else}
 					<div class="measuredQBit set">
-						Výsledek měření |{measured}⟩:
+						Naměřeno |{measured}⟩?
+						{resultText}
 					</div>
 				{/if}
 

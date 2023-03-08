@@ -5,7 +5,6 @@
 
 	const leaveSession = (): void => {
 		//Here goes Michal's code to leave session
-		//Here goes some code to route back to Sessions.svelte
 		appState!.update((s) => ({ ...s, role: 'none' }));
     	appState!.update((s) => ({ ...s, page: 'lobby' }));
 	};
