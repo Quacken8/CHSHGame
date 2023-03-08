@@ -1,3 +1,5 @@
+import { readable, writable } from 'svelte/store';
+
 export function deepEquals<T extends Record<string | number | symbol, any>>(a: T, b: T): boolean {
 	const keys = new Set<keyof T>([...Object.keys(a), ...Object.keys(b)]);
 	for (const key of keys) {
@@ -23,3 +25,8 @@ export function omit<
 	}
 	return Object.fromEntries([...keys].map((k) => [k, obj[k]])) as Omit<T, K>;
 }
+
+export const now = readable(Date.now(), (set) => {
+	const interval = setInterval(() => set(Date.now()), 100);
+	return () => clearInterval(interval);
+});
