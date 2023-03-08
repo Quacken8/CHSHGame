@@ -7,8 +7,10 @@ export type ServerType = 'server' | 'client' | 'none';
 
 export interface GameState {
 	gameMode: 'one-game' | 'many-games' | 'none';
+	//Given bits
 	a?: boolean;
 	b?: boolean;
+	//Selected bits
 	x?: boolean;
 	y?: boolean;
 	entangledPair?: [number, number, number, number];
@@ -16,6 +18,7 @@ export interface GameState {
 
 export interface GameEvents {
 	'pls-measure-my-state-alice': { angle: number };
+	'pls-register-y-alice': {y: boolean};
 	'just-wanted-to-say-haiii': 'uwu';
 }
 

@@ -4,35 +4,88 @@
 	import { getAppState } from '../types';
 
 	const appState = getAppState();
-	
 
 	export let angleNum = 0;
-	export let sentBit = '?';
 	export let measuredQBit = '?';
-	export let recievedBit = '?';
 
-	$: gameState = $appState?.connection.data
+	$: gameState = $appState?.connection.data;
 
+	//Given bits
 	$: a = $gameState?.a;
-	gameState?.update( (s) => ({...s,a: false}) )
+	$: b = $gameState?.b;
+	//Selected bits
+	$: x = $gameState?.x;
+	$: y = $gameState?.y;
 
-	if (appState?.value.role === 'server') {
+	let given: boolean;
+	let givenDisplay: 'ano' | 'ne';
+	$: if (given == true) {
+		givenDisplay = 'ano';
+	} else {
+		givenDisplay = 'ne';
+	}
 
+	let selected: boolean;
+	let givenText: 'a' | 'b';
+	let selectText: 'x' | 'y';
+	let haveMeasured: boolean = false;
+	let haveSelected: boolean = false;
+
+	$: if (appState?.value.role === 'server') {
+		gameState?.update((s) => ({ ...s, a: Math.random() < 0.5 }));
+		gameState?.update((s) => ({ ...s, b: Math.random() < 0.5 }));
+		given = a!;
+		selected = x!;
+		givenText = 'a';
+		selectText = 'x';
+		console.log('given:' + String(given));
+		console.log('givenText:' + givenText);
+		console.log('selectText:' + selectText);
+
+		$appState?.connection.addEventListener('pls-register-y-alice', (yy): void => {
+			console.log('Bob sent me y=' + String(yy) + '.');
+			gameState?.update((s) => ({ ...s, yy }));
+		});
 	} else if (appState?.value.role === 'client') {
+		given = b!;
+		selected = y!;
+		givenText = 'b';
+		selectText = 'y';
+		console.log('givenText:' + givenText);
+		console.log('selectText:' + selectText);
 	}
 
-	function _sendUp() {
-		sentBit = 'up';
-	}
-	function _sendDown() {
-		sentBit = 'down';
-	}
+	let measured: number;
+	const measureAlpha = (alpha: number): void => {
+		haveMeasured = !haveMeasured;
+		measured = alpha;
+	};
+
+	const sendSelected = (res: boolean): void => {
+		if (appState?.value.role === 'server') {
+			gameState?.update((s) => ({ ...s, x: res }));
+		} else if (appState?.value.role === 'client') {
+			$appState?.connection.sendEvent('pls-register-y-alice', { y: y! });
+		} else {
+			console.log('Error, role is none.');
+		}
+		haveSelected = true;
+	};
+
+	const showResults = (): void => {
+		appState!.update((s) => ({ ...s, page: 'results' }));
+	};
 </script>
 
 <main>
 	<div class="centering">
 		<div>
-			<div><h2>Kvantové měření</h2></div>
+			<div>
+				<h2 class="heading">Kontrolní panel</h2>
+				<p class="instructions">
+					Vyber úhel měření, naměř, a pak se rozhodni, jestli vystřelit meziplanetární kanón.
+				</p>
+			</div>
 
 			<div class="dialBox">
 				<Dial bind:angleNum />
@@ -40,20 +93,50 @@
 
 			<div class="bits">
 				<div class="recievedClassicalBit">
-					Přišel ti |{recievedBit}⟩
+					Ve dráze asteroidu ({givenText})? {givenDisplay}
 				</div>
-				<div class="measuredQBit">
-					Naměřeno |{measuredQBit}⟩
-				</div>
+				{#if !haveMeasured}
+					<div class="measuredQBit">
+						<button class="btn1" on:click={() => measureAlpha(angleNum)}
+							>Naměř úhel |{angleNum}⟩</button
+						>
+					</div>
+				{:else}
+					<div class="measuredQBit set">
+						Výsledek měření |{measured}⟩:
+					</div>
+				{/if}
 
-				<div class="replyTitle">Pošli:</div>
+				{#if !haveSelected}
+					<div class="replyTitle">Vystřelit meziplanetární kanón? ({selectText})</div>
 
-				<div class="replyUpBit">
-					<button class="btn1" on:click={_sendUp}> |↑⟩ </button>
-				</div>
-				<div class="replyDownBit">
-					<button class="btn1" on:click={_sendDown}> |↓⟩</button>
-				</div>
+					<div class="replyUpBit">
+						<button class="btn1" on:click={() => sendSelected(true)}>ano</button>
+					</div>
+					<div class="replyDownBit">
+						<button class="btn1" on:click={() => sendSelected(false)}>ne</button>
+					</div>
+				{:else}
+					<div class="replyTitle">Meziplanetární kanón? ({selectText})</div>
+
+					{#if selected}
+						<div class="replyUpBit set downset">Vystřelen</div>
+					{:else}
+						<div>
+							<button class="btn1 down" on:click={showResults}>Pokračuj</button>
+						</div>
+					{/if}
+
+					{#if !selected}
+						<div class="replyDownBit set downset">
+							<b>Ne</b>vystřelen
+						</div>
+					{:else}
+						<div class="replyDownBit">
+							<button class="btn1 down" on:click={showResults}>Pokračuj</button>
+						</div>
+					{/if}
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -62,15 +145,18 @@
 </main>
 
 <style>
+	.heading {
+		margin-bottom: 10px;
+	}
+
 	.dialBox {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background-color: var(--primary-color);
-		width: 50vw;
-		height: 60vh;
-		margin-top: 15px;
-		margin-bottom: 15px;
+		width: 70vw;
+		height: 55vh;
+		margin: 15px auto;
 	}
 
 	.bits {
@@ -87,7 +173,19 @@
 		align-items: center;
 		justify-content: center;
 		grid-area: 1 / 1 / 2 / 2;
-		background-color: blue;
+		background-color: var(--secondary-color);
+	}
+
+	.set {
+		background-color: var(--secondary-color);
+	}
+
+	.down {
+		margin-top: 4.8px;
+	}
+
+	.downset {
+		padding-top: 14.4px;
 	}
 
 	.measuredQBit {
@@ -95,7 +193,6 @@
 		align-items: center;
 		justify-content: center;
 		grid-area: 1 / 2 / 2 / 3;
-		background-color: blue;
 	}
 
 	.replyUpBit {
@@ -121,7 +218,7 @@
 	@media only screen and (max-width: 501px) {
 		.dialBox {
 			width: 80vmin;
-			height: 50vh;
+			height: 40vh;
 		}
 	}
 </style>
