@@ -74,6 +74,7 @@
 			} else if (params.who == 'Bob') {
 				key = 'y';
 			}
+			//console.log("Also printing the key value: " + String(key!))
 			gameState?.update((s) => ({ ...s, key: params.value }));
 		});
 		//Alice does either Alice's, or Bob's measurement

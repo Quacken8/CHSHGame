@@ -20,11 +20,17 @@
 	};
 	$: victory = isWin(x!, y!, a!, b!);
 
+	//Alice still registers the guess x or y
 	$: if (appState?.value.role === 'server') {
-		//Alice still listens if Bob tells her to write down what y is
-		$appState?.connection.addEventListener('pls-register-y-alice', (yy: boolean): void => {
-			console.log('Bob sent me y=' + String(yy) + '.');
-			gameState?.update((s) => ({ ...s, y: yy }));
+		$appState?.connection.addEventListener('pls-register', (params): void => {
+			console.log(String(params.who) + ' sent me selected=' + String(params.value) + '.');
+			let key: string;
+			if (params.who == 'Alice') {
+				key = 'x';
+			} else if (params.who == 'Bob') {
+				key = 'y';
+			}
+			gameState?.update((s) => ({ ...s, key: params.value }));
 		});
 	}
 </script>
