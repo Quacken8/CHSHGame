@@ -34,4 +34,4 @@ console.log(correctGuesses);
 console.log("Out of a total of:");
 console.log(numberOfTests);
 console.log("That is in percents:");
-console.log(correctGuesses / numberOfTests * 100); // oh boy i sure do hope there isnt anything funky regarding floats and ints here
+console.log(correctGuesses / numberOfTests * 100.0); // oh boy i sure do hope there isnt anything funky regarding floats and ints here
