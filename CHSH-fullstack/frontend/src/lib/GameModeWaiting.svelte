@@ -2,20 +2,15 @@
 	import catdance from '../assets/breakdance-cat-electronic-jazz.gif';
 	import Footer from './Footer.svelte';
 	import { getAppState } from '../types'; 
-    import type { PageType } from '../types';
 
 	const appState = getAppState();
 
-    let isGameModeChosen: boolean = false;
-    let gameMode: PageType;
+    $: gameState = $appState!.connection.data;
 
-	const goToMeasure = (mode: PageType): void => {
-		appState!.update((s) => ({ ...s, page: mode }));
-	};
-
-    $: if ( isGameModeChosen ) {
-        goToMeasure(gameMode);
-    }
+	$: if ( $gameState.gameMode ===  'one-game' ) {
+		appState!.update((s) => ({ ...s, page: 'measurement' }));
+	}
+    
 </script>
 
 <div class="centering">

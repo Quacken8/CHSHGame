@@ -1,15 +1,23 @@
 <script lang="ts">
+	import { Connection } from '../connection';
 	import { getAppState } from '../types';
 	import Footer from './Footer.svelte';
 
 	let appState = getAppState();
+    
+    $: gameState = $appState!.connection.data;
 
+	$: if ( $gameState.gameMode ===  'one-game' ) {
+		appState!.update((s) => ({ ...s, page: 'measurement' }));
+	}
+	
 	const oneGame = (): void => {
 		console.log('Starting one game...');
-		appState!.update((s) => ({ ...s, page: 'measurement' }));
+		$appState!.connection.data.value = {gameMode: 'one-game'}	
 	};
 	const hundredGames = (): void => {
 		console.log('Starting 100 games...');
+		$appState!.connection.data.value = {gameMode: 'many-games'}
 	};
 </script>
 
