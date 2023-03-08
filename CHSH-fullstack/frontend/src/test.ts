@@ -11,20 +11,20 @@ for (let i = 0; i < numberOfTests; i++) {
 
     // recieve bits from charlie
 
-    var AliceBit = Math.floor(Math.random() * 2) // a floor of number between 0 and 1.99 is just a coin toss
-    var BobBit = Math.floor(Math.random() * 2)
+    var AliceBit = Math.floor(Math.random() * 2); // a floor of number between 0 and 1.99 is just a coin toss
+    var BobBit = Math.floor(Math.random() * 2);
 
     // measure according to whateverthefuck i dont understand the entanglement
 
     var angleOfMeasurementInDegs = 0; // ???? idk?
     
-    var AliceMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs)
-    var BobMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs)
+    var AliceMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs);
+    var BobMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs);
 
     var AlicesSmartAndEntanglementInformedResponse = AliceMeasurementOutcome;
     var BobSmartAndEntanglementInformedResponse = BobMeasurementOutcome;
     
-    var didTheyDidTheThingProperly = (condition) ? true : false
+    var didTheyDidTheThingProperly = (condition) ? true : false; // the FUCK is the condition idk man
     if (didTheyDidTheThingProperly) {
         correctGuesses += 1.0;
     }
