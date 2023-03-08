@@ -2,7 +2,7 @@
 	import Dial from './Dial.svelte';
 	import Footer from './Footer.svelte';
 	import { getAppState } from '../types';
-	import { EntangledQuBits as EntangledQubits } from '../quantum';
+	import { EntangledQubits as EntangledQubits } from '../quantum';
 	import { FourVector } from '../quantum';
 
 	const appState = getAppState();

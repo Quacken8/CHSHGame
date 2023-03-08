@@ -1,4 +1,4 @@
-import { FourVector, EntangledQuBits } from './quantum';
+import { FourVector, EntangledQubits } from './quantum';
 
 const numberOfTests = 100;
 
@@ -16,7 +16,7 @@ for (let i = 0; i < numberOfTests; i++) {
 	// create entangled pair
 	const norm: number = 1 / Math.sqrt(2);
 	let initialState = new FourVector(norm, 0, 0, norm);
-	var Qubits = new EntangledQuBits(initialState);
+	var Qubits = new EntangledQubits(initialState);
 
 	// recieve bits from charlie
 
