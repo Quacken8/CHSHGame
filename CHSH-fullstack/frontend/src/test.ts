@@ -19,7 +19,7 @@ for (let i = 0; i < numberOfTests; i++) {
     var angleOfMeasurementInDegs = 0; // ???? idk?
     
     var AliceMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs);
-    var BobMeasurementOutcome = Qubits.measureOneQuBit("Alice", angleOfMeasurementInDegs);
+    var BobMeasurementOutcome = Qubits.measureOneQuBit("Bob", angleOfMeasurementInDegs);
 
     var AlicesSmartAndEntanglementInformedResponse = AliceMeasurementOutcome;
     var BobSmartAndEntanglementInformedResponse = BobMeasurementOutcome;
