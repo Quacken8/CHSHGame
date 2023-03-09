@@ -20,9 +20,8 @@
 		return A == B;
 	};
 	$: victory = isWin(x!, y!, a!, b!);
-    console.log(x);
 	if (x != undefined && y != undefined) {
-		//checks if both players finished
+		// FIXME checks if both players finished; am i using the right ones?
 		if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) {
             // games finished
 			appState!.update((s) => ({ ...s, page: 'results' }))
@@ -31,6 +30,8 @@
 		    let gamesWon = Number(gameState?.value.gamesWon);
 		    gameState!.update((s) => ({ ...s, gamesWon: gamesWon+1}));
 			// go to dial again
+		    gameState!.update((s) => ({ ...s, a: undefined})); // makes sure next time 
+            gameState!.update((s) => ({ ...s, b: undefined})); // the game will know they havent chosen yet
             appState!.update((s) => ({ ...s, page: 'measurement' }))
 		}
 	}
