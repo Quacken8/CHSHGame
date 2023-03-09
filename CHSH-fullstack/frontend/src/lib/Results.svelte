@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getAppState } from '../types';
 	import Footer from './Footer.svelte';
+	import catdance from '../assets/breakdance-cat-electronic-jazz.gif'
 
 	const appState = getAppState();
 	$: gameState = $appState?.connection.data;
@@ -35,11 +36,13 @@
 
 <div class="centering">
 	<div>
+		{#if (x != undefined) && (y != undefined)} <!-- checks if both players finished -->
+
 		<h1>Konec hry!</h1>
-		<div class="div2">Alice přišel {x}</div>
-		<div class="div3">Bobovi přišel {y}</div>
-		<div class="div6">Alice odeslala {a}</div>
-		<div class="div7">Bob odeslal {b}</div>
+		<div class="div2">Byla alice ve dráze asteroidu? {x}</div>
+		<div class="div3">Byl Bob ve dráze asteroidu? {y}</div>
+		<div class="div6">Vystřelila Alice? {a}</div>
+		<div class="div7">Vystřelil Bob? {b}</div>
 		<div class="div8">
 			{#if victory}
 				Vyhráli jste! C:
@@ -47,6 +50,13 @@
 				Prohráli jste :C
 			{/if}
 		</div>
+		{:else}
+		<h1>
+			Čekám na odpověď druhého hráče
+		</h1>
+		<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
+
+		{/if}
 	</div>
 </div>
 

@@ -36,7 +36,7 @@
 	}
 
 	input {
-		width: 2em;
+		width: 3em;
 		font-size: 1.25em;
 		text-align: center;
 	}

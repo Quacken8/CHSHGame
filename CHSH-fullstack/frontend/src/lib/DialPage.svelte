@@ -161,7 +161,7 @@
 				{#if !haveMeasured}
 					<div class="measuredQBit">
 						<button class="btn1" on:click={() => measureAlpha(angleNum)}
-							>Naměř úhel |{angleNum}⟩</button
+							>Naměř úhel |{angleNum}°⟩</button
 						>
 					</div>
 				{:else}
