@@ -3,7 +3,8 @@ marp: true
 theme: gaia
 class: invert
 math: katex
-style: |
+---
+<style>
   :root {
     font-size: 42px;
     font-family: Inter;
@@ -14,7 +15,7 @@ style: |
   ol li {
     padding-left: .7rem;
   }
----
+</style>
 <style scoped>
   section {
     text-align: center;
@@ -60,7 +61,7 @@ style: |
     * když kroužím nabitou částicí, magnety se chovají, jako kdyby tam byl magnet
 ---
 # Elektromagnetizmus
-  - magnetismus ovlivňuje nabité částice
+  - magnetizmus ovlivňuje nabité částice
     * když k letící nabité částici přiložím magnet, zatočí do strany
 ---
 # Elektromagnetizmus
@@ -83,7 +84,7 @@ style: |
 
   * pohybu magnetů/nabitých částic ⇒ EM záření
 ---
-# Elektromagnetismus
+# Elektromagnetizmus
   - vysvětluje:
     * statickou elektřinu
     * elektrické obvody
@@ -178,20 +179,54 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
     * nabitá částice v magnetickém poli krouží
     * → musíme proto použít neutrální částici
 
+---
+<style scoped>
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+  }
+  .columns div {
+    margin-top: -0.5em;
+  }
+  img {
+    width: 10em;
+    margin: -3em -2em -0.5em -0.5em;
+    clip-path: inset(10%);
+  }
+</style>
+<div class="columns">
+  <div>
+
+## „Magnetická vlastnost elektronu“
+- musíme použít neutrální částici
 * atom stříbra nebo draslíku
   * každý mají všechny elektrony krásně spárované – kromě jednoho volného
+
+  </div>
+  <div>
+
+![](https://upload.wikimedia.org/wikipedia/commons/c/ce/Electron_shell_047_Silver.svg)
+![](https://upload.wikimedia.org/wikipedia/commons/d/db/Electron_shell_019_Potassium.svg)
+
+  </div>
+</div>
+
 ---
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Electron_shell_047_Silver.svg/223px-Electron_shell_047_Silver.svg.png)
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Electron_shell_019_Potassium.svg/223px-Electron_shell_019_Potassium.svg.png)
+## „Magnetická vlastnost elektronu“
+  - musíme použít neutrální částici
+  - pro skeptiky:
+    * neutron
 
-  * pokud jste skeptici, má to jednu drobnou nevýhodu – musíte mi *věřit*, že jsou elektrony takhle uspořádané, teorii, která by to přesně předpovídala totiž zatím nemáme
-  * naštěstí proton & neutron mají taky magnetický moment, asi tisíckrát slabší, takže skeptici si místo stříbra nebo draslíku můžou představovat neutrony
-
+---
+# Experiment
+//TODO
 
   * vezmeme pec se stříbrem / draslíkem / zdroj neutronů
   * přidáme kolimátor, magnet, stínítko
   * můžeme testovat!
+
+---
 
   * ale pozor: lidský mozek je velmi dobrý ve vysvětlování pozorovaných jevů pomocí našich přesvědčení o tom, jak svět funguje
     * když máme nějakou představu, že něco funguje takhle a takhle, a pozorujeme nějaký jev, náš mozek se bude snažit použít naše současné porozumění, aby vysvětlil, proč se to stalo – a to i v případě, že pozorování ve skutečnosti *není* v souladu s naší představou světa
