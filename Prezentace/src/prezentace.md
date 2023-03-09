@@ -220,37 +220,39 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 
 ---
 # Experiment
-//TODO
-
-  * vezmeme pec se stříbrem / draslíkem / zdroj neutronů
-  * přidáme kolimátor, magnet, stínítko
-  * můžeme testovat!
+![bg 80%](./img/sg_single_0.png)
 
 ---
+# Experiment
+![bg 80%](./img/sg_single_1.png)
 
-  * ale pozor: lidský mozek je velmi dobrý ve vysvětlování pozorovaných jevů pomocí našich přesvědčení o tom, jak svět funguje
-    * když máme nějakou představu, že něco funguje takhle a takhle, a pozorujeme nějaký jev, náš mozek se bude snažit použít naše současné porozumění, aby vysvětlil, proč se to stalo – a to i v případě, že pozorování ve skutečnosti *není* v souladu s naší představou světa
-    * TODO vymyslet příklad
-    * proto je důležité stanovit *hypotézu*, co se stane!!!
-    * pojďme si tedy říci, jaké výsledky očekáváme
+---
+# Experiment
+![bg 80%](./img/sg_single_2.png)
 
-  * hypotézy:
-    * v případě, že atom není magnetický:
-      * poletí přímo dopředu, bude se chovat stejně se zapnutým i vypnutým magnetickým polem
-    * v případě, že atom je magnetický:
-      * magnetické pole jednak přitahuje celý atom, a jednak se ho snaží otočit
-      * elektron je "jednoduché posouvat, těžké otáčet":
-        * atom odkloněn jiným směrem, ale nestihne se otočit
-        * náhodný směr → normální distribuce
+---
+# Experiment
+![bg 80%](./img/sg_single_3.png)
 
-      * elektron je "jednoduché otáčet, těžké posouvat":
-        * bez tření:
-          * atom osciluje
-          * náhodný směr → normální distribuce
+---
+# Hypotézy
+ - jaký vzor na stínítku očekáváme?
 
-        * se třením:
-          * atom se zarovná shodně s polem
-          * náhodný směr → normální distribuce
+---
+# Hypotézy
+![bg height:70%](./img/sg_hypoteza_magnet.png)
+
+---
+<style scoped>
+  section > :not(h1) {
+    font-size: 0.8em;
+  }
+</style>
+# Hypotézy
+  1. není magnetický ⇒ poletí přímo dopředu ⇒ rozmazaná tečka
+  2. je magnetický, těžké otáčet ⇒ náhodný směr ⇒ rozmazaná tečka
+  3. je magnetický, jednoduché otáčet, bez tření ⇒ oscilace, náhodný směr ⇒ rozmazaná tečka
+  4. je magnetický, jednoduché otáčet, se třením ⇒ atom se zarovná shodně s polem ⇒ rozmazaná tečka
   
   * výsledek:
     * dva body!!!
