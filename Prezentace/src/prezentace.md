@@ -4,8 +4,9 @@ theme: gaia
 class: invert
 math: katex
 style: |
-  p, {
+  :root {
     font-size: 42px;
+    font-family: Inter;
   }
   ul li {
     padding-left: .2rem;
@@ -14,7 +15,14 @@ style: |
     padding-left: .7rem;
   }
 ---
-<br>
+<style scoped>
+  section {
+    text-align: center;
+  }
+  h1 {
+    margin-top: 1.2em;
+  }
+</style>
 
 # <!--fit--> (Pseudo)historický <br> kontext
 ---
@@ -22,62 +30,61 @@ style: |
 # (Pseudo)historický kontext
  * Začátek 20. století
  * tři **Newtonovy zákony** pohybu oslavily 230 let
-    - zrychlení v závislosti na působící síle
-    - zákon akce a reakce
+    * zrychlení v závislosti na působící síle
+    * zákon akce a reakce
     * přeformulován ekvivalentně do několika nových, elegantních matematických teoríí
 
 ---
 # (Pseudo)historický kontext
-  * kompletní teorie **Elektřiny & Magnetizmu** oslavila 50 let
-    * "vektory" pro elegantní výpočty
-    * rychlost světla? éter? → relativita
+  - kompletní teorie **Elektřiny & Magnetizmu** oslavila 50 let
+    * „vektory“ pro elegantní výpočty
 <br>
   * částečné porozumění atomům a molekulám
     * a velká touha dozvědět se víc!
 
 ---
 # Elektromagnetizmus
- * předměty mají "elektrický náboj"
-    - opačné náboje se přitahují
-    - stejné náboje se odpuzují
-    - síla $\propto$ velikost náboje
+ * předměty mají „elektrický náboj“
+    * opačné náboje se přitahují
+    * stejné náboje se odpuzují
+    * síla $\propto$ velikost náboje
 ---
 # Elektromagnetizmus
-  * existují magnety
-    - mají severní a jižní pól
-    - stejné póly se odpuzují
-    - opačné se přitahují
+  - existují magnety
+    * mají severní a jižní pól
+    * stejné póly se odpuzují
+    * opačné se přitahují
 ---
 # Elektromagnetizmus
-  * elektřina ovlivňuje magnety
-    - když kroužím nabitou částicí, magnety se chovají, jako kdyby tam byl magnet
+  - elektřina ovlivňuje magnety
+    * když kroužím nabitou částicí, magnety se chovají, jako kdyby tam byl magnet
 ---
 # Elektromagnetizmus
-  * magnetismus ovlivňuje nabité částice
-    - když k letící nabité částici přiložím magnet, zatočí do strany
+  - magnetismus ovlivňuje nabité částice
+    * když k letící nabité částici přiložím magnet, zatočí do strany
 ---
 # Elektromagnetizmus
-  * zá se, že existují částice s elektrickým nábojem (tzv. "elektrony" a "protony")
-  * zdá se, že **neexistují** magnetické částice neexistují
+  - zá se, že existují částice s elektrickým nábojem (tzv. „elektrony“ a „protony“)
+  * zdá se, že **neexistují** magnetické částice
     *  všechny magnety = kroužící nabité částice?
 ---
 # Elektromagnetizmus
-  * EM působí na dálku
+  - EM působí na dálku
   * neděje se to okamžitě
   * existuje E&M pole, změny v něm se šíří rychlostí světla
   * náhoda?!
-  * nemyslím si!!!
+  * nemyslím si!
 
 ---
 # Elektromagnetizmus
-  * změny v EM poli šířící se pryč od zdroje = „EM záření“
+  - změny v EM poli šířící se pryč od zdroje = „EM záření“
 
   * světlo, rádiové vlny, mikrovlnné záření, rentgenové záření
 
   * pohybu magnetů/nabitých částic ⇒ EM záření
 ---
 # Elektromagnetismus
-  * vysvětluje:
+  - vysvětluje:
     * statickou elektřinu
     * elektrické obvody
     * magnety, elektromagnety
@@ -99,20 +106,29 @@ style: |
 
 ---
 # Atomy
-  * Hvězdy, planety a měsíce lítají po různých orbitách a navzájem se různě ovlivňují. Dokážeme nějak zkoumat orbity elektronů kolem jader?
----
 
-    * Ano, dokážeme! Vzpomínáte, jak pohybující se částice vyzařují elektromagnetické záření? To nám může poskytnout všechny informace o pohybu elektronů na orbitách
-      kolem jader!
-        * anachronické přirovnání: gravitační vlny – gravitační interakce všech hmotných předmětů "rozvlní prostor" a s dostatečně citlivými přístroji bychom dokázali rekonstruovat, jak přesně se pohybovaly
-        * stejně tak teorie elektromagnetismu předvídá, že elektrony obíhající kolem středu atomů by měly vyzařovat elektromagnetické záření – tentokrát mnohem silnější
-    * Skutečné pozorování:
-        * podivnost: atomy v klidu nevyzařují žádné EM záření, a když je vybudíme, vyzařují jen záření o konkrétních, pevně daných vlnových délkách/frekvencích/barvách
-        * netušíme, jak to vysvětlit! zkusíme si tipnout, jak by to *zhruba* mohlo být:
-        * elektrony se nemůžou pohybovat jakkoliv, ale mají pevně dané "poličky", na kterých sedí, a jinde být nesmí
-        * každá "polička" má nějakou energii
-        * dokud jsou na "poličkách", nic nevyzařují
-        * když se přesunou mezi "poličkami", přijmou nebo vyzáří rozdíl energií
+_Hvězdy, planety a měsíce létají po různých orbitách a navzájem se různě ovlivňují. Dokážeme nějak zkoumat orbity elektronů kolem jader?_
+
+  * Ano, dokážeme!
+---
+# Vnitřní struktura atomu
+  * pohyb nabitých částic produkuje EM záření
+  * stejně jako pohyb planet a hvězd produkuje gravitační vlny
+  * gravitace je slabá ($10^{42}$-krát slabší než EM), proto byly gravitační vlny detekovány až v 2015
+  * EM je silné, proto 👀
+---
+# Vnitřní struktura atomu
+  * pojďme se tedy podívat na to, jak atomy vyzařují!
+  * _oh no...!_
+
+---
+// TODO
+* podivnost: atomy v klidu nevyzařují žádné EM záření, a když je vybudíme, vyzařují jen záření o konkrétních, pevně daných vlnových délkách/frekvencích/barvách
+* netušíme, jak to vysvětlit! zkusíme si tipnout, jak by to *zhruba* mohlo být:
+* elektrony se nemůžou pohybovat jakkoliv, ale mají pevně dané „poličky“, na kterých sedí, a jinde být nesmí
+* každá „polička“ má nějakou energii
+* dokud jsou na "poličkách", nic nevyzařují
+* když se přesunou mezi "poličkami", přijmou nebo vyzáří rozdíl energií
 
     * tahle teorie funguje!
         * = dobře predikuje pozorované vlnové délky
@@ -122,20 +138,49 @@ style: |
         * orbitaly můžou být různě vysoko (→ roste jejich energie)a různě prostorově orientované
         * magnetické štěpení → je elektron malý magnetek?
 
-    * PAUZA → SUDOKU!
+---
+
+<br>
+
+# <!--fit--> Přestávka!
+* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& sudoku
+
+---
+<!-- backgroundColor: #476647 -->
+<style scoped>
+  section {
+    text-align: center;
+    line-height: 170%;
+  }
+  h1 {
+    margin-top: 0.5em;
+  }
+</style>
+
+# <!--fit--> „Magnetická&nbsp;&nbsp;&nbsp;<br>vlastnost<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elektronu“
 
 
-# "Magnetická vlastnost elektronu"
-  * chceme prozkoumat, jestli elektron je skutečně malý magnetek
-  * jak ukázat, že je něco magnet? to je jednoduché – stačí ho dát do magnetického pole!
-    * není to tak jednoduché:
-      * v rovnoměrném magnetickém poli se magnet jen otáčí, ale nezrychluje
-      * → použijeme nerovnoměrné pole (např jen jeden magnet)
-      * nabitá částice v magnetickém poli krouží
-      * → musíme proto použít neutrální částici
-  
-  * atom stříbra nebo draslíku
-    * každý mají všechny elektrony krásně spárované – kromě jednoho volného
+---
+
+## „Magnetická vlastnost elektronu“
+  - otázka: je elektron malý magnetek?!
+  * jak na to?
+    * to je jednoduché!
+    * stačí ho dát do magnetického pole!
+---
+## „Magnetická vlastnost elektronu“
+  - není to tak jednoduché:
+    * v rovnoměrném magnetickém poli se magnet jen otáčí, ale nezrychluje
+    * ⇒ použijeme nerovnoměrné pole
+---
+## „Magnetická vlastnost elektronu“
+  - není to tak jednoduché:
+    * nabitá částice v magnetickém poli krouží
+    * → musíme proto použít neutrální částici
+
+* atom stříbra nebo draslíku
+  * každý mají všechny elektrony krásně spárované – kromě jednoho volného
+---
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Electron_shell_047_Silver.svg/223px-Electron_shell_047_Silver.svg.png)
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Electron_shell_019_Potassium.svg/223px-Electron_shell_019_Potassium.svg.png)
