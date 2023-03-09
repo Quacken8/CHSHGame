@@ -7,7 +7,7 @@
     
     $: gameState = $appState!.connection.data;
 	
-	const oneGame = (): void => {
+	const oneGame = (): void => { //FIXME - nefunguje, but why? Alice začne hru ale bob čeká. literally jsem tu jen přidal oproti minulý verzi game number update
 		console.log('Starting one game...');
 		appState!.update((s) => ({ ...s, gameMode: 'one-game'}));
 		gameState!.update((s) => ({ ...s, gameNumber: 1}));

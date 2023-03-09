@@ -22,7 +22,7 @@
 	$: victory = isWin(x!, y!, a!, b!);
 	if (x != undefined && y != undefined) {
 		// FIXME checks if both players finished; am i using the right ones?
-		if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) {
+		if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) { //FIXME - proč tohle projde i když many games a game number = 1 ?
             // games finished
 			appState!.update((s) => ({ ...s, page: 'results' }))
 		} else {
