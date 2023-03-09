@@ -212,7 +212,6 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 </div>
 
 ---
-
 ## „Magnetická vlastnost elektronu“
   - musíme použít neutrální částici
   - pro skeptiky:
@@ -253,11 +252,50 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
   2. je magnetický, těžké otáčet ⇒ náhodný směr ⇒ rozmazaná tečka
   3. je magnetický, jednoduché otáčet, bez tření ⇒ oscilace, náhodný směr ⇒ rozmazaná tečka
   4. je magnetický, jednoduché otáčet, se třením ⇒ atom se zarovná shodně s polem ⇒ rozmazaná tečka
-  
-  * výsledek:
-    * dva body!!!
-    * intenzita 50% : 50%
-    * → atom se velmi rychle zarovná shodně nebo opačně s magnetickým polem
+
+---
+# Výsledek experimentu
+
+![bg 70%](./img/sg_single_vysledek_padded.png)
+
+---
+# Výsledek experimentu
+  - dva body!!!
+  * intenzita 50% : 50%
+  * možné vysvětlení:
+    - _Atom se velmi rychle zarovná shodně nebo opačně s magnetickým polem._
+
+  * prozkoumat detailněji!
+---
+# Vylepšený experiment
+
+---
+# Vylepšený experiment
+![bg 80%](./img/sg_double_0.png)
+
+---
+# Vylepšený experiment
+![bg 80%](./img/sg_double_1.png)
+
+---
+# Vylepšený experiment
+![bg 80%](./img/sg_double_2.png)
+
+---
+# Vylepšený experiment
+![bg 80%](./img/sg_double_3.png)
+
+---
+<style scoped>
+  figure {
+    background-position: 80%;
+  }
+</style>
+# Vylepšený experiment
+![bg 80%](./img/sg_double_4.png)
+
+---
+
 
   * tohle podivné chování si zaslouží prozkoumat detailněji!
     * zkusíme přidat jeden další magnet
