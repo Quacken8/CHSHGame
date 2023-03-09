@@ -197,7 +197,18 @@
 				</div>
 			{:else if rp === 'rules'}
 				<div>
-					<p>TODO</p>
+					<p>
+						Váš ovládací panel se skládá z ciferníku a čtyř polí pod ním. V prvním poli (vlevo nahoře)
+						vidíte, jestli na Vaši planetu míří asteroid. Pod ním si můžete vybrat, zda vystřelit na 
+						asteroid, nebo ne. Pro výhru je kritické, aby se oba hráči zachovali stejně, pokud asteroid 
+						míří jen na jednoho z nich, a opačně ve zbylých případech.
+					</p>
+					<p>
+						Komunikace mezi hráči je zakázána, ale mohou využít měření kvantového provázání. Na ciferníku 
+						lze zvolit, v jakém směru mají měřit jejich proovázanou částici. Po výběru úhlu a 
+						stisku tlačítka "Naměř úhel" se dozvíte výsledek. Jak ho využijete je na Vás. Pokud 
+						jste zběhlí v kvantové mechanice, možná se v tomto měření skrývá Vaše záchrana.
+					</p>
 				</div>
 			{/if}
 
