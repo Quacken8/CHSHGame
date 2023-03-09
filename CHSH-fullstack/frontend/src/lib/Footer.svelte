@@ -21,7 +21,7 @@
 		{:else if role === 'client'}
 			<p>Bob</p>
 		{/if}
-		{#if Number(gameNumber) > 0}
+		{#if gameState?.value.gameMode == "many-games"}
 		<p>hra {gameNumber}</p>
 		{/if}
 	</div>
