@@ -6,8 +6,8 @@ export class FourVector {
 	components: [number, number, number, number];
 	//x* |up> |up> + y * |up> |down> + z * |down>|up> + w* |down> |down>
 	constructor(x: number, y: number, z: number, w: number) {
-		this.components = [x, y, z, w];
-		//TODO normalise the input qubit automatically in case it was forgotten
+        this.components = [x, y, z, w];
+        this.normalize()
 	}
 
 	dot(vec: FourVector) {
