@@ -19,6 +19,9 @@ export interface GameState {
 	resb?: boolean;
 	//Maybe obsolete?
 	entangledPair?: [number, number, number, number];
+	//many games interpretation xd
+	gameNumber?: number;
+	gamesWon?: number;
 }
 
 export interface GameEvents {

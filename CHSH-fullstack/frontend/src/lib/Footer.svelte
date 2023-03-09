@@ -8,6 +8,9 @@
 	$: sessionId$ = $appState?.connection.sessionId;
 	$: sessionId = $sessionId$;
 
+	$: gameState = $appState?.connection.data;
+	$: gameNumber = gameState?.value.gameNumber;
+
 	$: role = $appState?.role;
 </script>
 
@@ -17,6 +20,9 @@
 			<p>Alice</p>
 		{:else if role === 'client'}
 			<p>Bob</p>
+		{/if}
+		{#if Number(gameNumber) > 0}
+		<p>hra {gameNumber}</p>
 		{/if}
 	</div>
 	<div class="footer-item">
@@ -34,6 +40,11 @@
 		justify-content: center;
 	}
 	.footer-item {
+		display: flex;
+		flex-direction: column;
 		margin: 5px;
+	}
+	p {
+		margin: 0px;
 	}
 </style>

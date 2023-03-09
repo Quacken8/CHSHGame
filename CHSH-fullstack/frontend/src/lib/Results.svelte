@@ -5,6 +5,7 @@
 
 	const appState = getAppState();
 	$: gameState = $appState?.connection.data;
+	$: gamesWon = gameState?.value.gamesWon;
 
 	//Given bits
 	$: a = $gameState?.a;
@@ -36,26 +37,21 @@
 
 <div class="centering">
 	<div>
-		{#if (x != undefined) && (y != undefined)} <!-- checks if both players finished -->
-
 		<h1>Konec hry!</h1>
-		<div class="div2">Byla alice ve dráze asteroidu? {x}</div>
-		<div class="div3">Byl Bob ve dráze asteroidu? {y}</div>
-		<div class="div6">Vystřelila Alice? {a}</div>
-		<div class="div7">Vystřelil Bob? {b}</div>
-		<div class="div8">
-			{#if victory}
-				Vyhráli jste! C:
-			{:else}
-				Prohráli jste :C
-			{/if}
-		</div>
+		{#if gameState?.value.gameMode == 'one-game'}
+			<div class="div2">Byla alice ve dráze asteroidu? {x}</div>
+			<div class="div3">Byl Bob ve dráze asteroidu? {y}</div>
+			<div class="div6">Vystřelila Alice? {a}</div>
+			<div class="div7">Vystřelil Bob? {b}</div>
+			<div class="div8">
+				{#if victory}
+					Vyhráli jste! C:
+				{:else}
+					Prohráli jste :C
+				{/if}
+			</div>
 		{:else}
-		<h1>
-			Čekám na odpověď druhého hráče
-		</h1>
-		<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
-
+		<p>Vyhráli jste celkem {Number(gamesWon)} ze 100 her!</p>
 		{/if}
 	</div>
 </div>

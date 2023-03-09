@@ -7,7 +7,7 @@
 
     $: gameState = $appState!.connection.data;
 
-	$: if ( $gameState.gameMode ===  'one-game' ) {
+	$: if ( $gameState.gameMode ===  'one-game' || $gameState.gameMode ===  'many-games') {
 		appState!.update((s) => ({ ...s, page: 'measurement' }));
 	}
     
