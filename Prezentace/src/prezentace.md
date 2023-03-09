@@ -1,60 +1,106 @@
-# O nás
- * na začátku celé prezentace
- * Jindra o tom má připravenou prezentaci
- * nudná ⇒ proložit koťátky!!!
+---
+marp: true
+theme: gaia
+class: invert
+math: katex
+style: |
+  p, {
+    font-size: 42px;
+  }
+  ul li {
+    padding-left: .2rem;
+  }
+  ol li {
+    padding-left: .7rem;
+  }
+---
+<br>
 
-# Metodika
-  * přednáška bude anachronická – historie QM je velmi zajímavá, zároveň je
-    ale plná nepřesných myšlenek a objevů, které byly učiněny až příliš pozdě, na to jak důležité jsou
-  * zároveň jsem ale přesvědčen, že je mnohem víc odměňující novou fyzikální teorii postupně "objevit" – po kouscích postupovat od známého k neznámému – než ji dostat naservírovanou na podnosu. myslím si to z několika důvodů:
-    1. objevování je zábava!
-    2. tenhle přístup studujícího podporuje v kritickém přemýšlení – naším cílem není přijmout nějakou teorii jako dogmatickou pravdu, naším cílem je podívat se na výsledky experimentů a na základě nich:
-          1. usoudit jaké teorie vůbec připadají v úvahu, a jaké jsou rozhodně mimo hru
-          2. najít nějakou jednu teorii, ve které se pohodlně pracuje a dává nám dobré predikce
-    3. navíc věřím, že tenhle přístup nám dá mnohem hlubší porozumění, než kdybychom se zkrátka naučili používat nějaký existující model, nehledě na to, jak přesné predikce dává
+# <!--fit--> (Pseudo)historický <br> kontext
+---
 
-  * poznámka bokem: lidem, kteří fyziku nestudovali, by se mohlo zdát trochu zvláštní, že rovnou mluvím rovnou o spoustě různých "možných" teorií/modelů. "copak to není tak, že nejdřív byla klasická (newtonovská) fyzika, a my jsme potom zjistili, že ta je špatně, a teď máme kvantovou mechaniku a ta je správně?" → není to tak jednoduché! když máme jakoukoliv fyzikální teorii, je relativně snadné udělat v ní drobnou změnu, která bude pořád v souladu se všemi dosavadními experimenty. takže často velmi dobře víme, jak teorie vypadat *nemůže*, protože je to v rozporu s pozorováním
+# (Pseudo)historický kontext
+ * Začátek 20. století
+ * tři **Newtonovy zákony** pohybu oslavily 230 let
+    - zrychlení v závislosti na působící síle
+    - zákon akce a reakce
+    * přeformulován ekvivalentně do několika nových, elegantních matematických teoríí
 
+---
+# (Pseudo)historický kontext
+  * kompletní teorie **Elektřiny & Magnetizmu** oslavila 50 let
+    * "vektory" pro elegantní výpočty
+    * rychlost světla? éter? → relativita
+<br>
+  * částečné porozumění atomům a molekulám
+    * a velká touha dozvědět se víc!
 
-# Kontext
- * Chci, abyste se vcítili do fyzika na začátku 20. století
-    - "newtonovská" mechanika (tj. zákon akce a reakce – popsat!!, zrychlení v závislosti na síle atd.) je prozkoumaná do nejdrobnějších detailů
-    - ekvivalentní popis:
-      - Jan má dceru Annu a bratra Václava
-      - "Anna je neteř Václava"
-      - "Václav je strýc Anny"
-    - nedávno byla objevena dobrá teorie elektřiny a magnetizmu
-       - aby se s nimi dobře počítalo, začali jsme používat něco, čemu se říká "vektory"
-       - zdá se, že tahle teorie nefunguje až tak dobře pro rychle se pohybující pozorovatele, ale nějaký chytrák z Rakouska-Uherska už na tom prý pracuje
+---
+# Elektromagnetizmus
+ * předměty mají "elektrický náboj"
+    - opačné náboje se přitahují
+    - stejné náboje se odpuzují
+    - síla $\propto$ velikost náboje
+---
+# Elektromagnetizmus
+  * existují magnety
+    - mají severní a jižní pól
+    - stejné póly se odpuzují
+    - opačné se přitahují
+---
+# Elektromagnetizmus
+  * elektřina ovlivňuje magnety
+    - když kroužím nabitou částicí, magnety se chovají, jako kdyby tam byl magnet
+---
+# Elektromagnetizmus
+  * magnetismus ovlivňuje nabité částice
+    - když k letící nabité částici přiložím magnet, zatočí do strany
+---
+# Elektromagnetizmus
+  * zá se, že existují částice s elektrickým nábojem (tzv. "elektrony" a "protony")
+  * zdá se, že **neexistují** magnetické částice neexistují
+    *  všechny magnety = kroužící nabité částice?
+---
+# Elektromagnetizmus
+  * EM působí na dálku
+  * neděje se to okamžitě
+  * existuje E&M pole, změny v něm se šíří rychlostí světla
+  * náhoda?!
+  * nemyslím si!!!
 
- * Elektromagnetizmus:
-   - existují částice (malé kuličky, třeba částice prachu),
-     které mají různý "elektrický náboj" (číslo)
-       - částice, které mají opačný náboj se přitahují
-       - částice, které mají stejný náboj se odpuzují
-   - existují magnety, které mají severní a jižní pól
-       - stejné póly se odpuzují, opačné se přitahují
-   - elektřina a magnetismus se navzájem ovlivňují
-        - když kroužím nabitou částicí, magnety se chovají, jako kdyby tam byl magnet
-        - když k letící nabité částici přiložím magnet, začne kroužit
-   - zdá se, že žádné magnetické částice neexistují
-      -  → všechny magnety jsou vytvořeny kroužícími částicemi
-   - magnety a elektricky nabité věci se ovlivňují "na dálku"
-      -  → neděje se to okamžitě, ve skutečnosti existují tzv. pole (elektrické a magnetické), změny na nich se šíří jako vlny na jezeře, a to přesně danou rychlostí – rychlostí světla
-   - světlo, rádiové vlny, rentgenové záření – to všechno jsou druhy tzv. elektromagnetického záření, které vzniká při pohybu magnetů/elektricky nabitých částic
-      - světlo se může vlnit jinak svižně (frekvence / vlnová délka / barva), jinak mohutně (amplituda / intenzita) a jiným směrem (polarizace)
+---
+# Elektromagnetizmus
+  * změny v EM poli šířící se pryč od zdroje = „EM záření“
 
- * Nejlepší představa atomu je zatím:
-    - jádro je hromada kladně nabitých protonů a nenabitých neutronů
-    - kolem nich lítají záporně nabité elektrony
-        - neodletí pryč, protože je přitahuje jádro
-        - nespadnou dolů, protože odstředivá síla
-        - lítají jako měsíc kolem země nebo země kolem slunce
-        - → tzv. orbitální teorie
-        - čím dál je elektron od atomu, tím vyšší má (potenciální) energii
-           - → neintuitivní, vysvětlit, zjistit!!!
+  * světlo, rádiové vlny, mikrovlnné záření, rentgenové záření
 
-    * Hvězdy, planety a měsíce lítají po různých orbitách a navzájem se různě ovlivňují. Dokážeme nějak zkoumat orbity elektronů kolem jader?
+  * pohybu magnetů/nabitých částic ⇒ EM záření
+---
+# Elektromagnetismus
+  * vysvětluje:
+    * statickou elektřinu
+    * elektrické obvody
+    * magnety, elektromagnety
+    * světlo
+    * rádio, mikrovlnky, rentgen
+---
+# Atomy
+ * Nejlepší představa zatím:
+    * jádro = protony (+) a neutrony (Ø)
+    * kolem elektrony (−)
+      * elektrostat. přitažlivost ⇒ neodletí
+      * odstředivá síla ⇒ nespadnou dolů
+---
+# Atomy
+  * „planetární model“
+  * elektrony létají kolem jádra jako Měsíc kolem Země nebo Země kolem Slunce
+<br>
+  * těleso na **vzdálenější** orbitě má **větší** energii
+
+---
+# Atomy
+  * Hvězdy, planety a měsíce lítají po různých orbitách a navzájem se různě ovlivňují. Dokážeme nějak zkoumat orbity elektronů kolem jader?
+---
 
     * Ano, dokážeme! Vzpomínáte, jak pohybující se částice vyzařují elektromagnetické záření? To nám může poskytnout všechny informace o pohybu elektronů na orbitách
       kolem jader!
