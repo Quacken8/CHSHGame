@@ -24,12 +24,12 @@
 
 	function didBothSend(a?:boolean, b?:boolean){ // when both a and b get set it means both sent bits and we can continue
 		if (a != undefined && b != undefined) {
-			if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) {
+			if (gameState?.value.gameMode == 'one-game' || gameNumber! === 100) {
     	        // games finished
 				appState!.update((s) => ({ ...s, page: 'results' }))
 			} else {
 				// save results
-			    let gamesWon = Number(gameState?.value.gamesWon);
+			    let gamesWon = gameState!.value.gamesWon!;
 			    gameState!.update((s) => ({ ...s, gamesWon: gamesWon+1}));
 				// go to dial again
 			    gameState!.update((s) => ({ ...s, a: undefined})); // makes sure next time 
