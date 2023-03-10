@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "marp --html src/prezentace.md -o bin/prezentace.html"
+    "build": "marp --html src/prezentace.md -o bin/prezentace.html && ln -sf ../src/img -t bin && ln -sf ../src/scripts -t bin"
   },
   "keywords": [],
   "author": "",

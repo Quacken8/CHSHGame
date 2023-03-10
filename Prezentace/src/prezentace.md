@@ -176,7 +176,7 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 ---
 ## „Magnetická vlastnost elektronu“
   - není to tak jednoduché:
-    * nabitá částice v magnetickém poli krouží
+    - nabitá částice v magnetickém poli krouží
     * → musíme proto použít neutrální částici
 
 ---
@@ -201,6 +201,7 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 - musíme použít neutrální částici
 * atom stříbra nebo draslíku
   * každý mají všechny elektrony krásně spárované – kromě jednoho volného
+  * pro skeptiky: neutron
 
   </div>
   <div>
@@ -210,12 +211,6 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 
   </div>
 </div>
-
----
-## „Magnetická vlastnost elektronu“
-  - musíme použít neutrální částici
-  - pro skeptiky:
-    * neutron
 
 ---
 # Experiment
@@ -286,34 +281,55 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
 ![bg 80%](./img/sg_double_3.png)
 
 ---
-<style scoped>
-  figure {
-    background-position: 80%;
-  }
-</style>
 # Vylepšený experiment
 ![bg 80%](./img/sg_double_4.png)
 
 ---
+<style scoped>
+  img {
+    margin: 2.5em 0 0 -1em;
+  }
+</style>
+
+![width:14em](https://upload.wikimedia.org/wikipedia/commons/6/64/Stern-Gerlach_Analyzer_Sequential_Series_E1.png)
+![bg left 90%](./img/sg_double.png)
+
+---
+# Vylepšený experiment
+- jaký výsledek očekáváme tentokrát?
+
+---
+<style scoped>
+  .chart-wrapper {
+    margin-top: 1em;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+# Výsledek experimentu
+$$I(\alpha) = \left( \cos \frac{\alpha}{2} \right)^2$$
+
+<div class="chart-wrapper">
+  <canvas id="sg-double-chart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scripts/sg_double_chart.js"></script>
 
 
-  * tohle podivné chování si zaslouží prozkoumat detailněji!
-    * zkusíme přidat jeden další magnet
-    * tam, kde byl jeden z bodů, přidáme štěrbinu a necháme paprsek proletět k dalšímu magnetu
-    * druhý magnet lze otočit o libovolný úhel $\alpha$
-    * za druhý magnet přidáme stínítko
-    * měříme, jaká intenzita je na stínítku v závislosti na $\alpha$
+![bg right:20% fit](./img/sg_sequential_targets.png)
 
-    * hypotézy:
-      * magnet se natočí tím pólem, kterým je blíž → intenzita 100 % : 0 %
-      * ???
+---
 
-    * výsledek:
-      * $(\cos^2 \tfrac{\alpha}{2})$ : $(1 - \cos^2 \tfrac{\alpha}{2})$
-  
-    * vysvětlení: ???!?!
-    * když člověk neví, často se vyplatí udělat cimrmanovský "úkrok stranou"
-    * proto se teď podíváme na něco *úplně jiného*!
+![bg fit](./img/%3F%3F%3F.png)
+
+---
+
+# <!--fit--> Přestávka!
+* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& sudoku
+
+---
+
 
 # Vektory
   1. vektor jako šipka
