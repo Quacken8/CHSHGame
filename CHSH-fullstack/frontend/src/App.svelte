@@ -6,6 +6,7 @@
 	import GameModeWaiting from './lib/GameModeWaiting.svelte';
 	import DialPage from './lib/DialPage.svelte';
 	import Results from './lib/Results.svelte';
+	import NextGame from './lib/NextGame.svelte';
 
 	const appState = createAppState();
 
@@ -21,6 +22,8 @@
 		<GameModeWaiting />
 	{:else if $appState.page == 'measurement'}
 		<DialPage />
+	{:else if $appState.page == 'nextGame'}
+		<NextGame />
 	{:else if $appState.page == 'results'}
 		<Results />
 	{/if}

@@ -19,23 +19,42 @@
 		let B: boolean = (a && !b) || (!a && b); //XOR
 		return A == B;
 	};
+
 	$: victory = isWin(x!, y!, a!, b!);
-	if (x != undefined && y != undefined) {
-		// FIXME checks if both players finished; am i using the right ones?
-		if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) { //FIXME - proč tohle projde i když many games a game number = 1 ?
-            // games finished
-			appState!.update((s) => ({ ...s, page: 'results' }))
-		} else {
-			// save results
-		    let gamesWon = Number(gameState?.value.gamesWon);
-		    gameState!.update((s) => ({ ...s, gamesWon: gamesWon+1}));
-			// go to dial again
-		    gameState!.update((s) => ({ ...s, a: undefined})); // makes sure next time 
-            gameState!.update((s) => ({ ...s, b: undefined})); // the game will know they havent chosen yet
-            appState!.update((s) => ({ ...s, page: 'measurement' }))
+
+	function didBothSend(a?:boolean, b?:boolean){ // when both a and b get set it means both sent bits and we can continue
+		if (a != undefined && b != undefined) {
+			if (gameState?.value.gameMode == 'one-game' || Number(gameNumber) === 100) {
+    	        // games finished
+				appState!.update((s) => ({ ...s, page: 'results' }))
+			} else {
+				// save results
+			    let gamesWon = Number(gameState?.value.gamesWon);
+			    gameState!.update((s) => ({ ...s, gamesWon: gamesWon+1}));
+				// go to dial again
+			    gameState!.update((s) => ({ ...s, a: undefined})); // makes sure next time 
+    	        gameState!.update((s) => ({ ...s, b: undefined})); // the game will know they havent chosen yet
+    	        appState!.update((s) => ({ ...s, page: 'measurement' }))
+			}
 		}
 	}
+
+	$: didBothSend(a, b);
+
 </script>
 
-<h1>Čekám na odpověď druhého hráče</h1>
-<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
+
+<div class="centering">
+	<div>
+		<h1>Čekám na druhého hráče...</h1>
+
+		<img class="image" alt="Kočka točící se na jedné tlapce jako při breakdance." src={catdance} />
+	</div>
+</div>
+
+<style>
+		.image {
+		width: 50vmin;
+		margin-bottom: 10px;
+	}
+</style>

@@ -135,8 +135,8 @@
 		haveSelected = true;
 	};
 
-	const showResults = (): void => {
-		appState!.update((s) => ({ ...s, page: 'results' }));
+	const nextGame = (): void => {
+		appState!.update((s) => ({ ...s, page: 'nextGame' }));
 	};
 </script>
 
@@ -187,7 +187,7 @@
 						<div class="replyUpBit set downset">Vystřelen</div>
 					{:else}
 						<div>
-							<button class="btn1 down" on:click={showResults}>Pokračuj</button>
+							<button class="btn1 down" on:click={nextGame}>Pokračuj</button>
 						</div>
 					{/if}
 
@@ -197,7 +197,7 @@
 						</div>
 					{:else}
 						<div class="replyDownBit">
-							<button class="btn1 down" on:click={showResults}>Pokračuj</button>
+							<button class="btn1 down" on:click={nextGame}>Pokračuj</button>
 						</div>
 					{/if}
 				{/if}

@@ -3,7 +3,7 @@ import { cell, type Cell } from './cell';
 import { Connection } from './connection';
 import { FourVector } from './quantum';
 
-export type PageType =  'lobby' | 'gameModeSelect' | 'gameModeWaiting' | 'measurement' | 'results';
+export type PageType =  'lobby' | 'gameModeSelect' | 'gameModeWaiting' | 'measurement' | 'nextGame' | 'results';
 export type ServerType = 'server' | 'client' | 'none';
 
 export interface GameState {
