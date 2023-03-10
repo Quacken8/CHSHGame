@@ -340,7 +340,7 @@ $$I(\alpha) = \left( \cos \frac{\alpha}{2} \right)^2$$
   6. délka vektoru ve směru jiného (jednotkového) vektoru (skalární součin)
 ---
 # Vektory
-![](https://media0.giphy.com/media/mCdhhsCLGluNi/giphy.gif)
+![vektooor ou jee](https://media0.giphy.com/media/mCdhhsCLGluNi/giphy.gif)
 
 ---
 
