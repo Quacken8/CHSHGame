@@ -3,6 +3,7 @@ marp: true
 theme: gaia
 class: invert
 math: katex
+backgroundColor: #485d66;
 ---
 <style>
   :root {
@@ -118,11 +119,67 @@ _Hvězdy, planety a měsíce létají po různých orbitách a navzájem se růz
   * gravitace je slabá ($10^{42}$-krát slabší než EM), proto byly gravitační vlny detekovány až v 2015
   * EM je silné, proto 👀
 ---
+<style scoped>
+  img {
+    width: 60%;
+    clip-path: inset(22% 0 27% 0);
+    margin-top: -4.5em;
+  }
+</style>
+
 # Vnitřní struktura atomu
   * pojďme se tedy podívat na to, jak atomy vyzařují!
-  * _oh no...!_
+  * _oh no...!_<br>
+    ![](https://www.thoughtco.com/thmb/vBBSot-KVN99GByRKORrLZJgGyo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1096547948-35b3799817ca4b2fa06888893ef4a348.jpg)
 
 ---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_z%C3%A1kladn%C3%AD.png)
+
+---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_absorbce.png)
+
+---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_excitovan%C3%BD.png)
+
+---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_emise.png)
+
+---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_z%C3%A1kladn%C3%AD.png)
+
+---
+<style scoped>section{text-align: center}</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_mrt%C4%9B.png)
+
+---
+<style scoped>
+  section {
+    text-align: center;
+  }
+  .magnet {
+    position: absolute;
+    left: 2em;
+    top: 2em;
+  }
+</style>
+# „Šuplíkový model“
+![](./img/%C5%A1upl%C3%ADky_magnetick%C3%A9_rozd%C4%9Blen%C3%AD.png)
+
+<img class="magnet" src="./img/šuplíky_magnet.png">
+
+---
+
 // TODO
 * podivnost: atomy v klidu nevyzařují žádné EM záření, a když je vybudíme, vyzařují jen záření o konkrétních, pevně daných vlnových délkách/frekvencích/barvách
 * netušíme, jak to vysvětlit! zkusíme si tipnout, jak by to *zhruba* mohlo být:
@@ -330,32 +387,43 @@ $$I(\alpha) = \left( \cos \frac{\alpha}{2} \right)^2$$
 
 ---
 <!-- backgroundColor: #66474e -->
+<style scoped>
+  h1 {
+    margin-top: -0.5em;
+  }
+  ol {
+    margin-top: 0;
+    font-size: 0.9em;
+  }
+  li {
+    margin: 0.15em;
+  }
+</style>
 
 # Vektory
-  1. vektor jako šipka
-  2. vektor jako $n$-tice čísel
-  3. délka vektoru (Pythagorova věta), jednotkový vektor
-  4. délka vektoru v nějakém směru (projekce, geometricky)
-  5. vektor otočený nějakým směrem ($\sin$, $\cos$)
-  6. délka vektoru ve směru jiného (jednotkového) vektoru (skalární součin)
----
-# Vektory
-![vektooor ou jee](https://media0.giphy.com/media/mCdhhsCLGluNi/giphy.gif)
+  1) vektor jako šipka
+  2) vektor jako $n$-tice čísel
+  3) délka vektoru (Pythagorova věta), jednotkový vektor
+  4) délka vektoru v nějakém směru (projekce, geometricky)
+  5) vektor otočený nějakým směrem <span style="display:inline-block">($\sin$, $\cos$)</span>
+  6) délka vektoru ve směru jiného (skalární součin)
+
+![bg right:30%](https://media0.giphy.com/media/mCdhhsCLGluNi/giphy.gif)
 
 ---
 
 # Polarizace
-  * TODO
- 
+
+---
 
 # Sekvenční SG s více kroky
-  * TODO
-  * atom "zapomene" v jakém byl stavu
+
+---
 
 # Interpretace
-  * TODO
-  *
+
+---
 
 
 # Provázaný stav
- * TODO
+

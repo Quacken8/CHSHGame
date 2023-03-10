@@ -37,7 +37,6 @@ void loop() {
   
   delay(readoutDelay);
 
-
   if (Serial.available() > 0) {
     OCR2A = Serial.parseInt(SKIP_ALL, '\n');
     Serial.println("Setting PWM value: " + String(OCR2A));
