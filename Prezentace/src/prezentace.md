@@ -329,7 +329,7 @@ $$I(\alpha) = \left( \cos \frac{\alpha}{2} \right)^2$$
 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& sudoku
 
 ---
-
+<!-- backgroundColor: #66474e -->
 
 # Vektory
   1. vektor jako šipka
@@ -338,6 +338,11 @@ $$I(\alpha) = \left( \cos \frac{\alpha}{2} \right)^2$$
   4. délka vektoru v nějakém směru (projekce, geometricky)
   5. vektor otočený nějakým směrem ($\sin$, $\cos$)
   6. délka vektoru ve směru jiného (jednotkového) vektoru (skalární součin)
+---
+# Vektory
+![](https://media0.giphy.com/media/mCdhhsCLGluNi/giphy.gif)
+
+---
 
 # Polarizace
   * TODO
