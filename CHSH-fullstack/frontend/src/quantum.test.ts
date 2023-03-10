@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { FourVector } from './quantum';
+import { test100 } from './test'
+
+test100();
 
 describe('four-vector', () => {
 	it('can be instantiated', () => {

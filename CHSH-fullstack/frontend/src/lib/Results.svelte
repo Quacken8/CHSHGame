@@ -5,7 +5,7 @@
 
 	const appState = getAppState();
 	$: gameState = $appState?.connection.data;
-	$: gamesWon = gameState?.value.gamesWon;
+	$: gamesWon = gameState?.value.gamesWon!;
 
 	//Given bits
 	$: a = $gameState?.a;
@@ -51,7 +51,7 @@
 				{/if}
 			</div>
 		{:else}
-		<p>Vyhráli jste celkem {Number(gamesWon)} ze 100 her!</p>
+		<p>Vyhráli jste celkem {gamesWon} ze 100 her!</p>
 		{/if}
 	</div>
 </div>
