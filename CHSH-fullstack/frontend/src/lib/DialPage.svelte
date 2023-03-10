@@ -10,7 +10,6 @@
 	export let angleNum = 0;
 
 	$: gameState = $appState?.connection.data;
-
 	//Given bits
 	$: x = $gameState?.x;
 	$: y = $gameState?.y;
@@ -46,17 +45,16 @@
 	} else {
 		resultText = 'ne';
 	}
-
+	console.log(appState?.value.role);
 	let haveMeasured: boolean = false;
 	let haveSelected: boolean = false;
-
 	if (appState?.value.role === 'server') {
 		//Alice generates x and y and saves them to the store (this must happen only once)
 		let xrand: boolean = Math.random() < 0.5;
 		let yrand: boolean = Math.random() < 0.5;
 		console.log("Generating x and y: " + String(xrand) + " and " + String(yrand))
-		gameState?.update((s) => ({ ...s, x: xrand }));
-		gameState?.update((s) => ({ ...s, y: yrand })); 
+		appState?.value.connection.data.update((s) => ({ ...s, x: xrand }));
+		appState?.value.connection.data.update((s) => ({ ...s, y: yrand })); 
 	}
 
 	//Alice is the keeper of the qubits, but Bob can have his (useless) Qubit too
